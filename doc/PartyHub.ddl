@@ -2,8 +2,8 @@
 -- * Standard SQL generation                   
 -- *--------------------------------------------
 -- * DB-MAIN version: 11.0.2              
--- * Generator date: Sep 14 2021              
--- * Generation date: Mon Jan 15 15:37:02 2024 
+-- * Generator timestamp: Sep 14 2021              
+-- * Generation timestamp: Mon Jan 15 15:37:02 2024 
 -- * LUN file: C:\Users\chiar\Desktop\Chiara\uni\terzo_anno\tecnologie_web\progetto\PartyHub\doc\PartyHub.lun 
 -- * Schema: SCHEMA/SQL 
 -- ********************************************* 
@@ -23,93 +23,93 @@ create database SCHEMA;
 -- _____________ 
 
 create table Commento (
-     idCommento char(255) not null,
-     DataOra date not null,
-     Testo char(255) not null,
-     idPost char(255) not null,
-     UserCommento char(255) not null,
+     idCommento varchar(255) not null,
+     DataOra timestamp not null,
+     Testo varchar(255) not null,
+     idPost varchar(255) not null,
+     UserCommento varchar(255) not null,
      constraint ID_Commento_ID primary key (idCommento));
 
 create table Richiesta (
-     Username char(255) not null,
-     idEvento char(255) not null,
-     idNotifica char(255) not null,
-     Accettata char not null,
+     Username varchar(255) not null,
+     idEvento varchar(255) not null,
+     idNotifica varchar(255) not null,
+     Accettata varchar not null,
      constraint ID_Richiesta_ID primary key (Username, idEvento),
      constraint SID_Richi_Notif_ID unique (idNotifica));
 
 create table Evento (
-     idEvento char(255) not null,
-     Nome char(255) not null,
-     Indirizzo char(255) not null,
-     NumeroCivico numeric(1) not null,
-     Citta char(255) not null,
-     Paese char(255) not null,
-     DataOra date not null,
-     NumeroPartecipanti numeric(1) not null,
-     Organizzatore char(255) not null,
+     idEvento varchar(255) not null,
+     Nome varchar(255) not null,
+     Indirizzo varchar(255) not null,
+     NumeroCivico int not null,
+     Citta varchar(255) not null,
+     Paese varchar(255) not null,
+     DataOra timestamp not null,
+     NumeroPartecipanti int not null,
+     Organizzatore varchar(255) not null,
      constraint ID_Evento_ID primary key (idEvento));
 
 create table MiPiace (
-     UserMiPiace char(255) not null,
-     idPost char(255) not null);
+     UserMiPiace varchar(255) not null,
+     idPost varchar(255) not null);
 
 create table Lista (
-     idLista char(255) not null,
-     ImportoTotale float(1) not null,
-     idEvento char(255) not null,
+     idLista varchar(255) not null,
+     ImportoTotale float not null,
+     idEvento varchar(255) not null,
      constraint ID_Lista_ID primary key (idLista));
 
 create table Notifica (
-     idNotifica char(255) not null,
-     Tipo char(255) not null,
-     Testo char(255) not null,
-     UserInvio char(255) not null,
-     UserRicevente char(255) not null,
-     idPost char(255),
+     idNotifica varchar(255) not null,
+     Tipo varchar(255) not null,
+     Testo varchar(255) not null,
+     UserInvio varchar(255) not null,
+     UserRicevente varchar(255) not null,
+     idPost varchar(255),
      constraint ID_Notifica_ID primary key (idNotifica));
 
 create table Opzione (
-     idSondaggio char(255) not null,
-     Nome char(255) not null,
-     NumeroVoti numeric(1) not null,
+     idSondaggio varchar(255) not null,
+     Nome varchar(255) not null,
+     NumeroVoti int not null,
      constraint ID_Opzione_ID primary key (idSondaggio, Nome));
 
 create table Post (
-     idPost char(255) not null,
-     DataOra date not null,
-     Testo char(255),
-     Immagine char(255),
-     Personale char not null,
-     NumeroLike numeric(1) not null,
-     NumeroCommenti numeric(1) not null,
-     Proprietario char(255) not null,
+     idPost varchar(255) not null,
+     DataOra timestamp not null,
+     Testo varchar(255),
+     Immagine varchar(255),
+     Personale varchar not null,
+     NumeroLike int not null,
+     NumeroCommenti int not null,
+     Proprietario varchar(255) not null,
      constraint ID_Post_ID primary key (idPost));
 
 create table Prodotto (
-     idProdotto char(255) not null,
-     Nome char(255) not null,
-     Prezzo float(1) not null,
-     idLista char(255) not null,
+     idProdotto varchar(255) not null,
+     Nome varchar(255) not null,
+     Prezzo float not null,
+     idLista varchar(255) not null,
      constraint ID_Prodotto_ID primary key (idProdotto));
 
 create table Segui (
-     Follower char(255) not null,
-     Following char(255) not null,
+     Follower varchar(255) not null,
+     Following varchar(255) not null,
      constraint ID_Segui_ID primary key (Follower, Following));
 
 create table Sondaggio (
-     idSondaggio char(255) not null,
-     idEvento char(255) not null,
+     idSondaggio varchar(255) not null,
+     idEvento varchar(255) not null,
      constraint ID_Sondaggio_ID primary key (idSondaggio));
 
 create table Utente (
-     Nome char(255) not null,
-     Cognome char(255) not null,
-     Username char(255) not null,
-     Password char(255) not null,
-     Email char(255) not null,
-     DataDiNascita date not null,
+     Nome varchar(255) not null,
+     Cognome varchar(255) not null,
+     Username varchar(255) not null,
+     Password varchar(255) not null,
+     Email varchar(255) not null,
+     DataDiNascita timestamp not null,
      constraint ID_Utente_ID primary key (Username));
 
 
