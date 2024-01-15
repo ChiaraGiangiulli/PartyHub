@@ -12,7 +12,7 @@
 -- Database Section
 -- ________________ 
 
-create database SCHEMA;
+create database PartyHub;
 
 
 -- DBSpace Section
@@ -21,6 +21,7 @@ create database SCHEMA;
 
 -- Tables Section
 -- _____________ 
+use PartyHub;
 
 create table Commento (
      idCommento varchar(255) not null,
@@ -31,11 +32,11 @@ create table Commento (
      constraint ID_Commento_ID primary key (idCommento));
 
 create table Richiesta (
-     Username varchar(255) not null,
+     UserPartecipante varchar(255) not null,
      idEvento varchar(255) not null,
      idNotifica varchar(255) not null,
-     Accettata varchar not null,
-     constraint ID_Richiesta_ID primary key (Username, idEvento),
+     Accettata boolean not null,
+     constraint ID_Richiesta_ID primary key (UserPartecipante, idEvento),
      constraint SID_Richi_Notif_ID unique (idNotifica));
 
 create table Evento (
@@ -80,7 +81,7 @@ create table Post (
      DataOra timestamp not null,
      Testo varchar(255),
      Immagine varchar(255),
-     Personale varchar not null,
+     Personale boolean not null,
      NumeroLike int not null,
      NumeroCommenti int not null,
      Proprietario varchar(255) not null,
@@ -118,75 +119,75 @@ create table Utente (
 
 alter table Commento add constraint REF_Comme_Post_FK
      foreign key (idPost)
-     references Post;
+     references Post(idPost);
 
 alter table Commento add constraint REF_Comme_Utent_FK
      foreign key (UserCommento)
-     references Utente;
+     references Utente(Username);
 
 alter table Richiesta add constraint SID_Richi_Notif_FK
      foreign key (idNotifica)
-     references Notifica;
+     references Notifica(idNotifica);
 
 alter table Richiesta add constraint REF_Richi_Event_FK
      foreign key (idEvento)
-     references Evento;
+     references Evento(idEvento);
 
 alter table Richiesta add constraint REF_Richi_Utent
-     foreign key (Username)
-     references Utente;
+     foreign key (UserPartecipante)
+     references Utente(Username);
 
 alter table Evento add constraint REF_Event_Utent_FK
      foreign key (Organizzatore)
-     references Utente;
+     references Utente(Username);
 
 alter table MiPiace add constraint REF_MiPia_Utent_FK
      foreign key (UserMiPiace)
-     references Utente;
+     references Utente(Username);
 
 alter table MiPiace add constraint REF_MiPia_Post_FK
      foreign key (idPost)
-     references Post;
+     references Post(idPost);
 
 alter table Lista add constraint REF_Lista_Event_FK
      foreign key (idEvento)
-     references Evento;
+     references Evento(idEvento);
 
 alter table Notifica add constraint REF_Notif_Utent_1_FK
      foreign key (UserInvio)
-     references Utente;
+     references Utente(Username);
 
 alter table Notifica add constraint REF_Notif_Utent_FK
      foreign key (UserRicevente)
-     references Utente;
+     references Utente(Username);
 
 alter table Notifica add constraint REF_Notif_Post_FK
      foreign key (idPost)
-     references Post;
+     references Post(idPost);
 
 alter table Opzione add constraint REF_Opzio_Sonda
      foreign key (idSondaggio)
-     references Sondaggio;
+     references Sondaggio(idSondaggio);
 
 alter table Post add constraint REF_Post_Utent_FK
      foreign key (Proprietario)
-     references Utente;
+     references Utente(Username);
 
 alter table Prodotto add constraint REF_Prodo_Lista_FK
      foreign key (idLista)
-     references Lista;
+     references Lista(idLista);
 
 alter table Segui add constraint REF_Segui_Utent_1_FK
      foreign key (Following)
-     references Utente;
+     references Utente(Username);
 
 alter table Segui add constraint REF_Segui_Utent
      foreign key (Follower)
-     references Utente;
+     references Utente(Username);
 
 alter table Sondaggio add constraint REF_Sonda_Event_FK
      foreign key (idEvento)
-     references Evento;
+     references Evento(idEvento);
 
 
 -- Index Section
@@ -202,7 +203,7 @@ create index REF_Comme_Utent_IND
      on Commento (UserCommento);
 
 create unique index ID_Richiesta_IND
-     on Richiesta (Username, idEvento);
+     on Richiesta (UserPartecipante, idEvento);
 
 create unique index SID_Richi_Notif_IND
      on Richiesta (idNotifica);
