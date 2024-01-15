@@ -23,8 +23,18 @@
         <button type="button" class="btn btn-link float-right">Forgot password?</button>
         <br>
         <div class="d-flex justify-content-end">
-            <button type="login" class="btn btn-primary mr-" >Login</button> 
-            <button type="signin" class="btn btn-secondary">Signin</button>
+        <form method="post" action="">
+                <button id="signup" class="btn btn-info btn-lg" name="signup">Sign up</button></br></br>
+                <?php
+                    if(isset($_POST['signup']))
+                        echo "<script>window.open('home.php','_self')</script>"
+                ?>
+                <button id="login" class="btn btn-info btn-lg" name="login">Log in</button></br></br>
+                <?php
+                    if(isset($_POST['login']))
+                        echo "<script>window.open('home.php','_self')</script>"
+                ?>
+            </form>
         </div>
     </body>
     </html>
