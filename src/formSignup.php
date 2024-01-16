@@ -16,7 +16,7 @@
     </div>
     <div class="mb-3 mt-3">
         <label for="Name">Name:</label>
-        <input type="text" class="form-control" id="name" placeholder="Name" name="namen" required>
+        <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
     </div>
     <div class="mb-3 mt-3">
         <label for="Name">Surname:</label>

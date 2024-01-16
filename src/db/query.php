@@ -22,9 +22,9 @@ class DatabaseHelper{
 
     public function checkUser($username, $psswrd){
         $query = "
-            SELECT u.Username u.Password
+            SELECT u.Username, u.Password
             FROM utente u
-            WHERE u.username = ? AND u.psswrd = ?
+            WHERE u.Username = ? AND u.Password = ?
         ";
 
         $stmt = $this->db->prepare($query);
