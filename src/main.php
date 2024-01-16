@@ -14,12 +14,12 @@
                 <div class="well">
                     <center><h1>PartyHub</h1></center>
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
     <div class="container p-5 border border-4 border-dark">
         <input type="text" name="username" id="user" class="form-control" placeholder="Enter username" required><br>
-        <input type="password" class="form-control" placeholder="Enter password" name="pswd">
+        <input type="password" class="form-control" placeholder="Enter password" name="psw">
         <button type="button" class="btn btn-link float-right">Forgot password?</button>
         <br>
         <div class="d-flex justify-content-end">
