@@ -3,20 +3,22 @@ include '../db/query.php';
 
 $dbh = new DatabaseHelper("localhost", "root", "", "partyhub", 3306);
 
+print_r($_POST);
 //effettua il login
-if(isset($_POST['username'], $_POST['password'])) { 
+if(isset($_POST['username'], $_POST['psw'])) { 
+    echo "bo";
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = $_POST['psw'];
     if ($dbh->checkUser($username, $password)){
        // Login eseguito
-       $result["logineseguito"] = true;
+       echo "ye";
     } else {
        // Login fallito
-       $result["errorelogin"] = "Username e/o password errati";
+       echo "Username e/o password errati";
     }
  } else { 
     // Le variabili corrette non sono state inviate a questa pagina dal metodo POST.
-    $result["errorelogin"] = "Richiesta non valida";
+    echo "Richiesta non valida";
  }
 
 

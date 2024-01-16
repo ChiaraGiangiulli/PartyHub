@@ -11,7 +11,7 @@
 <div class="container">
     <h1>PartyHub</h1>
     <h2>Signup</h2>
-    <form action="/PartyHub/src/processSignup.php" method="post">
+    <form action="/PartyHub/src/api/signup.php" method="post">
 
     </div>
     <div class="mb-3 mt-3">
