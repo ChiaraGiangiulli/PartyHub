@@ -11,12 +11,12 @@
 <div class="container">
     <h1>PartyHub</h1>
     <h2>Signup</h2>
-    <form action="/PartyHub/src/processSignup.php" method="post">
+    <form action="/PartyHub/src/processSignup.php" method="post" novalidate>
 
     </div>
     <div class="mb-3 mt-3">
         <label for="Name">Name:</label>
-        <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
+        <input type="text" class="form-control" id="name" placeholder="Name" name="namen" required>
     </div>
     <div class="mb-3 mt-3">
         <label for="Name">Surname:</label>
