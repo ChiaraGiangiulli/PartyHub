@@ -24,23 +24,23 @@ create database PartyHub;
 use PartyHub;
 
 create table Commento (
-     idCommento varchar(255) not null,
+     idCommento int not null,
      DataOra timestamp not null,
      Testo varchar(255) not null,
-     idPost varchar(255) not null,
+     idPost int not null,
      UserCommento varchar(255) not null,
      constraint ID_Commento_ID primary key (idCommento));
 
 create table Richiesta (
      UserPartecipante varchar(255) not null,
-     idEvento varchar(255) not null,
-     idNotifica varchar(255) not null,
+     idEvento int not null,
+     idNotifica int not null,
      Accettata boolean not null,
      constraint ID_Richiesta_ID primary key (UserPartecipante, idEvento),
      constraint SID_Richi_Notif_ID unique (idNotifica));
 
 create table Evento (
-     idEvento varchar(255) not null,
+     idEvento int not null,
      Nome varchar(255) not null,
      Indirizzo varchar(255) not null,
      NumeroCivico int not null,
@@ -53,31 +53,31 @@ create table Evento (
 
 create table MiPiace (
      UserMiPiace varchar(255) not null,
-     idPost varchar(255) not null);
+     idPost int not null);
 
 create table Lista (
-     idLista varchar(255) not null,
+     idLista int not null,
      ImportoTotale float not null,
-     idEvento varchar(255) not null,
+     idEvento int not null,
      constraint ID_Lista_ID primary key (idLista));
 
 create table Notifica (
-     idNotifica varchar(255) not null,
+     idNotifica int not null,
      Tipo varchar(255) not null,
      Testo varchar(255) not null,
      UserInvio varchar(255) not null,
      UserRicevente varchar(255) not null,
-     idPost varchar(255),
+     idPost int,
      constraint ID_Notifica_ID primary key (idNotifica));
 
 create table Opzione (
-     idSondaggio varchar(255) not null,
+     idSondaggio int not null,
      Nome varchar(255) not null,
      NumeroVoti int not null,
      constraint ID_Opzione_ID primary key (idSondaggio, Nome));
 
 create table Post (
-     idPost varchar(255) not null,
+     idPost int not null,
      DataOra timestamp not null,
      Testo varchar(255),
      Immagine varchar(255),
@@ -88,10 +88,10 @@ create table Post (
      constraint ID_Post_ID primary key (idPost));
 
 create table Prodotto (
-     idProdotto varchar(255) not null,
+     idProdotto int not null,
      Nome varchar(255) not null,
      Prezzo float not null,
-     idLista varchar(255) not null,
+     idLista int not null,
      constraint ID_Prodotto_ID primary key (idProdotto));
 
 create table Segui (
@@ -100,8 +100,8 @@ create table Segui (
      constraint ID_Segui_ID primary key (Follower, Following));
 
 create table Sondaggio (
-     idSondaggio varchar(255) not null,
-     idEvento varchar(255) not null,
+     idSondaggio int not null,
+     idEvento int not null,
      constraint ID_Sondaggio_ID primary key (idSondaggio));
 
 create table Utente (
