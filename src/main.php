@@ -18,23 +18,20 @@
         </div>
     </div>
     <div class="container p-5 border border-4 border-dark">
-        <input type="text" name="username" id="user" class="form-control" placeholder="Enter username" required><br>
-        <input type="password" class="form-control" placeholder="Enter password" name="psw">
-        <button type="button" class="btn btn-link float-right">Forgot password?</button>
-        <br>
-        <div class="d-flex justify-content-end">
-        <form method="post" action="">
-                <button id="signup" class="btn btn-info btn-lg" name="signup">Sign up</button></br></br>
-                <?php
-                    if(isset($_POST['signup']))
-                        echo "<script>window.open('formSignup.php','_self')</script>"
-                ?>
-                <button id="login" class="btn btn-info btn-lg" name="login">Log in</button></br></br>
-                <?php
-                    if(isset($_POST['login']))
-                        echo "<script>window.open('api/login.php','_self')</script>"
-                ?>
-            </form>
-        </div>
-    </body>
-    </html>
+    <div class="container mt-3">
+  <h2>Login</h2>
+  <form action="/PartyHub/src/api/login.php" method="post">
+    <div class="mb-3 mt-3">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+    </div>
+    <div class="mb-3">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="psw" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
+
+</body>
+</html>
