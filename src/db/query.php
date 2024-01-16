@@ -9,25 +9,40 @@ class DatabaseHelper{
         }        
     }
 
-    public function createUser($name, $surname, $username, $psswrd, $email, $date){
+    public function createUser($name, $surname, $username, $psswrd, $email, $date, $immagine){
         $query = "
-            INSERT INTO utente (Nome, Cognome, Password, Email, DataDiNascita)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO utente (Nome, Cognome, Username, Password, Email, DataDiNascita, ImmagineProfilo)
+            VALUES (?, ?, ?, ?, ?, ?)
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssb', $name, $surname, $username, $psswrd, $email, $date);
+        $stmt->bind_param('ssssb', $name, $surname, $username, $psswrd, $email, $date, $immagine);
         $stmt->execute();
     }
 
-    public function createEvent($id, $nome, $indirizzo, $civico, $citta, $paese, $dataOra, $numeroPartecipanti, $organizzatore){
+    public function checkUser($username, $psswrd){
         $query = "
-            INSERT INTO evento (idEvento, Nome, Indirizzo, NumeroCivico, Citta, Paese, DataOra, NumeroPartecipanti, Organizzatore)
-            VALUES (?, ?, ?, ?, ?)
+            SELECT u.Username u.Password
+            FROM utente u
+            WHERE u.username = ? AND u.psswrd = ?
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssissbis', $id, $nome, $indirizzo, $civico, $citta, $paese, $dataOra, $numeroPartecipanti, $organizzatore);
+        $stmt->bind_param('ss', $username, $psswrd);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function createEvent($id, $nome, $indirizzo, $civico, $citta, $paese, $dataOra, $numeroPartecipanti, $organizzatore, $immagine){
+        $query = "
+            INSERT INTO evento (idEvento, Nome, Indirizzo, NumeroCivico, Citta, Paese, DataOra, NumeroPartecipanti, Organizzatore, Copertina)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sssissbis', $id, $nome, $indirizzo, $civico, $citta, $paese, $dataOra, $numeroPartecipanti, $organizzatore, $immagine);
         $stmt->execute();
     }
 
@@ -285,11 +300,22 @@ class DatabaseHelper{
         $query = "
             UPDATE richiesta r
             SET r.Accettata = true
-            WHERE r.UserPartecipante = ? AND r.idEvento
+            WHERE r.UserPartecipante = ? AND r.idEvento = ?
         ";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ds', $Prezzo, $IdLista);
+        $stmt->execute();
+    }
+
+    public function requestDenied($UserPartecipante, $idEvento){
+        $query = "
+            DELETE FROM richiesta 
+            WHERE r.UserPartecipante = ? AND r.idEvento = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ds', $UserPartecipante, $idEvento);
         $stmt->execute();
     }
 

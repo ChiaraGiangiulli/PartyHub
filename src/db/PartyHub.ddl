@@ -49,6 +49,7 @@ create table Evento (
      DataOra timestamp not null,
      NumeroPartecipanti int not null,
      Organizzatore varchar(255) not null,
+     Copertina varchar(255),
      constraint ID_Evento_ID primary key (idEvento));
 
 create table MiPiace (
@@ -111,6 +112,7 @@ create table Utente (
      Password varchar(255) not null,
      Email varchar(255) not null,
      DataDiNascita timestamp not null,
+     ImmagineProfilo varchar(255),
      constraint ID_Utente_ID primary key (Username));
 
 
