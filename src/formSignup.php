@@ -11,11 +11,7 @@
 <div class="container">
     <h1>PartyHub</h1>
     <h2>Signup</h2>
-<<<<<<< HEAD:src/signup.php
-    <form action="/PartyHub/src/processSignup.php" method="post" novalidate>
-=======
     <form action="/PartyHub/src/api/signup.php" method="post">
->>>>>>> ba5754e1862b16ea04d62550507ab9220c751099:src/formSignup.php
 
     </div>
     <div class="mb-3 mt-3">
