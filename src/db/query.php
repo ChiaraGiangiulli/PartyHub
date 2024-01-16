@@ -12,11 +12,11 @@ class DatabaseHelper{
     public function createUser($name, $surname, $username, $psswrd, $email, $date, $immagine){
         $query = "
             INSERT INTO utente (Nome, Cognome, Username, Password, Email, DataDiNascita, ImmagineProfilo)
-            VALUES (?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssb', $name, $surname, $username, $psswrd, $email, $date, $immagine);
+        $stmt->bind_param('sssssbs', $name, $surname, $username, $psswrd, $email, $date, $immagine);
         $stmt->execute();
     }
 
