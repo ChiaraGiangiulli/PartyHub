@@ -32,7 +32,7 @@
     <button type="submit" class="btn btn-primary">Login</button>
 </form>
 </div>
-<form action="/PartyHub/src/formSignup.php">
+<form action="/PartyHub/src/view/formSignup.php">
     <button type="submit" class="btn btn-link">Not a member? Signup.</button>
     </form>
 

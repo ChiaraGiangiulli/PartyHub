@@ -10,7 +10,7 @@ if(isset($_POST['username'], $_POST['psw'])) {
        // Login eseguito
        session_start();
        $_SESSION["user_id"] = $username;
-       echo "<script>window.open('../../src/home.php','_self')</script>";
+       echo "<script>window.open('../../src/view/home.php','_self')</script>";
     } else {
        // Login fallito
        echo "Username e/o password errati";

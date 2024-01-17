@@ -1,8 +1,8 @@
 <?php require_once 'search.php' ?>
 
-    <form class="navbar-form" action="/action_page.php">
+    <form class="navbar-form" method="post" action="../api/eventsFromName.php">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" id="srch" name="search" class="form-control" placeholder="Search">
         </div>
     </form>
     

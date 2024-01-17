@@ -57,6 +57,52 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function getEventFromDate($date){
+        $query = "
+           SELECT *
+           FROM evento e
+           WHERE e.Data = ?
+           ORDER BY e.Data DESC
+        ";
+        $dateWithQuotes = "'" . $date . "'";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $dateWithQuotes);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getEventFromName($name){
+        $query = "
+           SELECT *
+           FROM evento e
+           WHERE e.Nome = ?
+           ORDER BY e.Data DESC
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $name);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getUserFromUsername($username){
+        $query = "
+           SELECT *
+           FROM utente u
+           WHERE u.Username = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function createPost($id, $dataOra, $testo, $immagine, $personale, $proprietario){
         $query = "
             INSERT INTO post (idPost, DataOra, Testo, Immagine, Personale, NumeroLike, NumeroCommenti, Proprietario)
@@ -77,6 +123,24 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $id);
         $stmt->execute();
+    }
+
+    public function getFollowersPosts($user){
+        $query = "
+            SELECT *
+            FROM post p
+            WHERE p.Personale = ? AND p.proprietario IN (
+                SELECT s.Follower 
+                FROM segui s
+                WHERE s.Following = ? )
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $personale = 1;
+        $stmt->bind_param('is', $personale, $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function follow($followerId, $followingId){
