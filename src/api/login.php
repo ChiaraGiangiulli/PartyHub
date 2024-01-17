@@ -1,5 +1,4 @@
-<?php 
-include '../db/query.php';
+<?php include '../db/query.php';
 
 $dbh = new DatabaseHelper("localhost", "root", "", "partyhub", 3306);
 
@@ -9,6 +8,8 @@ if(isset($_POST['username'], $_POST['psw'])) {
     $password = $_POST['psw'];
     if ($dbh->checkUser($username, $password)){
        // Login eseguito
+       session_start();
+       $_SESSION["user_id"] = $username;
        echo "<script>window.open('../../src/home.php','_self')</script>";
     } else {
        // Login fallito
