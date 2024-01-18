@@ -14,7 +14,7 @@
             <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "profilePhotos.php"){echo "active";}?>" href="profilePhotos.php">Photos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "profileEvents.php"){echo "active";}?>" href="profileEvents.php">Groups</a>
+            <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "profileEvents.php"){echo "active";}?>" href="profileEvents.php">Events</a>
           </li>
         </ul>
     </nav>

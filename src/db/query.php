@@ -64,9 +64,8 @@ class DatabaseHelper{
            WHERE e.Data = ?
            ORDER BY e.Data DESC
         ";
-        $dateWithQuotes = "'" . $date . "'";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $dateWithQuotes);
+        $stmt->bind_param('s', $date);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
