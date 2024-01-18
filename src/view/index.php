@@ -8,10 +8,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-  <div id="logo" class="text-center">
-        <a href="#"><img src="" alt=""/></a>
-  </div>
-    <div class="container p-5 border border-4 border-dark">
+  <div class="container p-5">
+<center><img src="../img/logo1.png" alt="PartyHub" class="img-rounded w-50" title="PartyHub logo"
+id="logo"></center>
+</div>
+    <div class="container p-5 border w-70">
     <div class="container mt-3">
   <h2>Login</h2>
   <form action="/PartyHub/src/api/login.php" method="post">
