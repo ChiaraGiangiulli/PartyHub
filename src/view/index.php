@@ -8,12 +8,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-  <div class="container p-5">
-<center><img src="../img/logo1.png" alt="PartyHub" class="img-rounded w-50" title="PartyHub logo"
-id="logo"></center>
+<div id="logoMobile" class="text-center">
+    <a href="./index.php">
+      <img src="../img/logo.png" alt="PartyHub" class="img w-50" title="PartyHub logo" id="logo">
+    </a>
 </div>
-    <div class="container p-5 border w-70">
-    <div class="container mt-3">
+<div class="container-sm p-5 border">
   <h2>Login</h2>
   <form action="/PartyHub/src/api/login.php" method="post">
     <div class="mb-3 mt-3">

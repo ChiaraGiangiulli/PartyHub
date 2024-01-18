@@ -8,42 +8,46 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <h1>PartyHub</h1>
-    <h2>Signup</h2>
-    <form action="/PartyHub/src/api/signup.php" method="post">
+    <div id="logoMobile" class="text-center">
+        <a href="./index.php">
+        <img src="../img/logo.png" alt="PartyHub" class="img w-50" title="PartyHub logo" id="logo">
+        </a>
+    </div>
+    <div class="container-sm p-5 border">
+        
+        <h2>Signup</h2>
+        <form action="/PartyHub/src/api/signup.php" method="post">
 
+            <div class="mb-3 mt-3">
+                <label for="Name">Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="Name">Surname:</label>
+                <input type="text" class="form-control" id="surname" placeholder="Surname" name="surname" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="Username">Username:</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd" required>
+            </div>
+            <div class="mb-3">
+                <label for="pwd">Confirm Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Confirm password" name="pwd" required>
+            </div>
+            <button type="submit" class="btn btn-success">Signup</button>
+        </form>
     </div>
-    <div class="mb-3 mt-3">
-        <label for="Name">Name:</label>
-        <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
-    </div>
-    <div class="mb-3 mt-3">
-        <label for="Name">Surname:</label>
-        <input type="text" class="form-control" id="surname" placeholder="Surname" name="surname" required>
-    </div>
-    <div class="mb-3 mt-3">
-        <label for="Username">Username:</label>
-        <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
-    </div>
-    <div class="mb-3">
-        <label for="dob">Date of Birth:</label>
-        <input type="date" class="form-control" id="dob" name="dob" required>
-    </div>
-    <div class="mb-3 mt-3">
-        <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
-    <div class="mb-3">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd" required>
-    </div>
-    <div class="mb-3">
-        <label for="pwd">Confirm Password:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Confirm password" name="pwd" required>
-    </div>
-    <button type="submit" class="btn btn-success">Signup</button>
-</form>
-</div>
-
 </body>
 </html>
