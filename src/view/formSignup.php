@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
+    <script src="../js/validation.js" defer></script>
+
+
 </head>
 <body>
     <div id="logoMobile" class="text-center">
@@ -16,7 +20,7 @@
     <div class="container-sm p-5 border">
         
         <h2>Signup</h2>
-        <form action="/PartyHub/src/api/signup.php" method="post">
+        <form id="signup" action="/PartyHub/src/api/signup.php" method="post">
 
             <div class="mb-3 mt-3">
                 <label for="Name">Name:</label>
@@ -33,6 +37,7 @@
             <div class="mb-3">
                 <label for="dob">Date of Birth:</label>
                 <input type="date" class="form-control" id="dob" name="dob" required>
+
             </div>
             <div class="mb-3 mt-3">
                 <label for="email">Email:</label>
