@@ -1,4 +1,6 @@
-<?php require_once 'homeBar.php' ?>
+<?php require_once 'homeBar.php' ;
+  session_start();
+?>
     <div class="col-sm-12 text-center mt-4">
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
         <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5"/>
@@ -6,7 +8,7 @@
       </svg>
     </div>
     <div class="col-sm-12 text-center mt-3">
-      <?php session_start(); print_r($_SESSION["user_id"]);?>
+      <?php print_r($_SESSION["user_id"]);?>
     </div>
     <nav class="navbar navbar-expand bg-light justify-content-center">
         <ul class="navbar-nav">
