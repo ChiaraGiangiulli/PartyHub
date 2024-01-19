@@ -20,19 +20,19 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
-    public function checkUser($username, $psswrd){
+    public function checkUser($username){
         $query = "
-            SELECT u.Username, u.Password
+            SELECT u.Password
             FROM utente u
-            WHERE u.Username = ? AND u.Password = ?
+            WHERE u.Username = ?
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $username, $psswrd);
+        $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $result->fetch_assoc()['Password'];
     }
 
     public function createEvent($id, $nome, $indirizzo, $civico, $citta, $paese, $dataOra, $numeroPartecipanti, $organizzatore, $immagine){
