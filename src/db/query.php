@@ -164,6 +164,34 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function getFollowers($user){
+        $query = "
+            SELECT s.Follower 
+            FROM segui s
+            WHERE s.Following = ? 
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFollowing($user){
+        $query = "
+            SELECT s.Following 
+            FROM segui s
+            WHERE s.Follower = ? 
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function addLike($user, $post){
         $query = "
             INSERT INTO mipiace (UserMiPiace, IdPost)

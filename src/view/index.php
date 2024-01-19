@@ -25,11 +25,13 @@
       <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="psw" required>
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
-</form>
+  </form>
 </div>
-<form action="/PartyHub/src/view/formSignup.php">
+<div class="container-sm">
+  <form action="/PartyHub/src/view/formSignup.php">
     <button type="submit" class="btn btn-link">Not a member? Signup.</button>
-    </form>
+  </form>
+</div>
 
 </body>
 </html>
