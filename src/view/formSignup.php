@@ -48,8 +48,8 @@
                 <input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd" required>
             </div>
             <div class="mb-3">
-                <label for="pwd">Confirm Password:</label>
-                <input type="password" class="form-control" id="pwd" placeholder="Confirm password" name="pwd" required>
+                <label for="rpwd">Confirm Password:</label>
+                <input type="password" class="form-control" id="rpwd" placeholder="Confirm password" name="rpwd" required>
             </div>
             <button type="submit" class="btn btn-success">Signup</button>
         </form>
