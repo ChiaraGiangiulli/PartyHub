@@ -24,7 +24,7 @@ create database PartyHub;
 use PartyHub;
 
 create table Commento (
-     idCommento int not null,
+     idCommento int not null auto_increment,
      DataOra timestamp not null,
      Testo varchar(255) not null,
      idPost int not null,
@@ -40,7 +40,7 @@ create table Richiesta (
      constraint SID_Richi_Notif_ID unique (idNotifica));
 
 create table Evento (
-     idEvento int not null,
+     idEvento int not null auto_increment,
      Nome varchar(255) not null,
      Indirizzo varchar(255) not null,
      NumeroCivico int not null,
@@ -58,13 +58,13 @@ create table MiPiace (
      idPost int not null);
 
 create table Lista (
-     idLista int not null,
+     idLista int not null auto_increment,
      ImportoTotale float not null,
      idEvento int not null,
      constraint ID_Lista_ID primary key (idLista));
 
 create table Notifica (
-     idNotifica int not null,
+     idNotifica int not null auto_increment,
      Tipo varchar(255) not null,
      Testo varchar(255) not null,
      UserInvio varchar(255) not null,
@@ -73,13 +73,13 @@ create table Notifica (
      constraint ID_Notifica_ID primary key (idNotifica));
 
 create table Opzione (
-     idSondaggio int not null,
+     idSondaggio int not null auto_increment,
      Nome varchar(255) not null,
      NumeroVoti int not null,
      constraint ID_Opzione_ID primary key (idSondaggio, Nome));
 
 create table Post (
-     idPost int not null,
+     idPost int not null auto_increment,
      DataOra timestamp not null,
      Testo varchar(255),
      Immagine varchar(255),
@@ -90,7 +90,7 @@ create table Post (
      constraint ID_Post_ID primary key (idPost));
 
 create table Prodotto (
-     idProdotto int not null,
+     idProdotto int not null auto_increment,
      Nome varchar(255) not null,
      Prezzo float not null,
      idLista int not null,
@@ -102,7 +102,7 @@ create table Segui (
      constraint ID_Segui_ID primary key (Follower, Following));
 
 create table Sondaggio (
-     idSondaggio int not null,
+     idSondaggio int not null auto_increment,
      idEvento int not null,
      constraint ID_Sondaggio_ID primary key (idSondaggio));
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Signup</title>
+    <title>Create Event</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
             </div>
             <div class="mb-3 mt-3">
                 <label for="number">N°:</label>
-                <input type="number" class="form-control" id="number" placeholder="Number" name="username" required>
+                <input type="number" class="form-control" id="number" placeholder="Number" name="number" required>
             </div>
             <div class="mb-3">
                 <label for="city">City:</label>
@@ -31,11 +31,15 @@
             </div>
             <div class="mb-3 mt-3">
                 <label for="country">Country:</label>
-                <input type="text" class="form-control" id="country" placeholder="Country" name="countryS" required>
+                <input type="text" class="form-control" id="country" placeholder="Country" name="country" required>
             </div>
             <div class="mb-3">
                 <label for="date">Date:</label>
                 <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="time">Time:</label>
+                <input type="time" class="form-control" id="time" name="time" required>
             </div>
             <button type="submit" class="btn btn-success">Create</button>
         </form>

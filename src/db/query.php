@@ -16,7 +16,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssssbs', $name, $surname, $username, $psswrd, $email, $date, $immagine);
+        $stmt->bind_param('sssssss', $name, $surname, $username, $psswrd, $email, $date, $immagine);
         $stmt->execute();
     }
 
@@ -35,15 +35,16 @@ class DatabaseHelper{
         return $result->fetch_assoc()['Password'];
     }
 
-    public function createEvent($id, $nome, $indirizzo, $civico, $citta, $paese, $dataOra, $numeroPartecipanti, $organizzatore, $immagine){
+    public function createEvent($nome, $indirizzo, $civico, $citta, $paese, $data, $ora, $numeroPartecipanti, $organizzatore, $immagine){
         $query = "
-            INSERT INTO evento (idEvento, Nome, Indirizzo, NumeroCivico, Citta, Paese, DataOra, NumeroPartecipanti, Organizzatore, Copertina)
-            VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO evento (Nome, Indirizzo, NumeroCivico, Citta, Paese, Data, Ora, NumeroPartecipanti, Organizzatore, Copertina)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssissbis', $id, $nome, $indirizzo, $civico, $citta, $paese, $dataOra, $numeroPartecipanti, $organizzatore, $immagine);
+        $stmt->bind_param('ssissssiss', $nome, $indirizzo, $civico, $citta, $paese, $data, $ora, $numeroPartecipanti, $organizzatore, $immagine);
         $stmt->execute();
+        return $stmt->insert_id;
     }
 
     public function deleteEvent($id){
@@ -53,7 +54,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $id);
+        $stmt->bind_param('i', $id);
         $stmt->execute();
     }
 
@@ -102,15 +103,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function createPost($id, $dataOra, $testo, $immagine, $personale, $proprietario){
+    public function createPost($dataOra, $testo, $immagine, $personale, $proprietario){
         $query = "
-            INSERT INTO post (idPost, DataOra, Testo, Immagine, Personale, NumeroLike, NumeroCommenti, Proprietario)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO post (DataOra, Testo, Immagine, Personale, NumeroLike, NumeroCommenti, Proprietario)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sbssbiis', $id, $dataOra, $testo, $immagine, $personale, 0, 0, $proprietario);
+        $stmt->bind_param('sssbiis', $dataOra, $testo, $immagine, $personale, 0, 0, $proprietario);
         $stmt->execute();
+        return $stmt->insert_id;
     }
 
     public function deletePost($id){
@@ -120,7 +122,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $id);
+        $stmt->bind_param('i', $id);
         $stmt->execute();
     }
 
@@ -149,7 +151,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $follower,$following);
+        $stmt->bind_param('ss', $followerId, $followingId);
         $stmt->execute();
     }
 
@@ -160,7 +162,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $follower,$following);
+        $stmt->bind_param('ss', $followerId, $followingId);
         $stmt->execute();
     }
 
@@ -199,7 +201,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $user, $post);
+        $stmt->bind_param('si', $user, $post);
         $stmt->execute();
 
         $query = "
@@ -209,7 +211,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $post);
+        $stmt->bind_param('i', $post);
         $stmt->execute();
     }
 
@@ -220,7 +222,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $user, $post);
+        $stmt->bind_param('si', $user, $post);
         $stmt->execute();
 
         $query = "
@@ -230,29 +232,31 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $post);
+        $stmt->bind_param('i', $post);
         $stmt->execute();
     }
 
-    public function addComment($idCommento, $DataOra, $Testo, $idPost, $UserCommento){
+    public function addComment($DataOra, $Testo, $idPost, $UserCommento){
         $query = "
-            INSERT INTO commento (idCommento, DataOra, Testo, idPost, UserCommento)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO commento (DataOra, Testo, idPost, UserCommento)
+            VALUES (?, ?, ?, ?)
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sbsss', $idCommento, $DataOra, $Testo, $idPost, $UserCommento);
+        $stmt->bind_param('ssis', $DataOra, $Testo, $idPost, $UserCommento);
         $stmt->execute();
 
-        $query = "
+        $query1 = "
             UPDATE post p
             SET p.NumeroCommenti = p.NumeroCommenti + 1
             WHERE p.IdPost = ?
         ";
 
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $idPost);
-        $stmt->execute();
+        $stmt1 = $this->db->prepare($query1);
+        $stmt1->bind_param('i', $idPost);
+        $stmt1->execute();
+
+        return $stmt->insert_id;
     }
 
     public function removeComment($idCommento, $idPost){
@@ -262,7 +266,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $idCommento);
+        $stmt->bind_param('i', $idCommento);
         $stmt->execute();
 
         $query = "
@@ -272,29 +276,29 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $idPost);
+        $stmt->bind_param('i', $idPost);
         $stmt->execute();
     }
 
-    public function addSurvey($idSondaggio, $idEvento){
+    public function addSurvey($idEvento){
         $query = "
-            INSERT INTO sondaggio (idSondaggio, idEvento)
-            VALUES (?, ?)
+            INSERT INTO sondaggio (idEvento)
+            VALUES (?)
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $idSondaggio, $idEvento);
+        $stmt->bind_param('i', $idEvento);
         $stmt->execute();
     }
 
-    public function deleteSurvey($idSondaggio, $idEvento){
+    public function deleteSurvey($idSondaggio){
         $query = "
             DELETE FROM sondaggio
             WHERE idSondaggio = ?
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $idSondaggio);
+        $stmt->bind_param('i', $idSondaggio);
         $stmt->execute();
     }
 
@@ -305,7 +309,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssi', $idSondaggio, $Nome, 0);
+        $stmt->bind_param('isi', $idSondaggio, $Nome, 0);
         $stmt->execute();
     }
 
@@ -317,7 +321,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $idSondaggio, $Nome);
+        $stmt->bind_param('is', $idSondaggio, $Nome);
         $stmt->execute();
     }
 
@@ -329,18 +333,18 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $idPost);
+        $stmt->bind_param('is', $idSondaggio, $Nome);
         $stmt->execute();
     }
     
-    public function addList($idLista, $idEvento){
+    public function addList($idEvento){
         $query = "
             INSERT INTO lista (idLista, ImportoTotale, idEvento)
-            VALUES (?, ?, ?)
+            VALUES ((SELECT MAX(idLista) FROM lista)+1, ?, ?)
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sis', $idLista, 0, $idEvento);
+        $stmt->bind_param('ii', 0, $idEvento);
         $stmt->execute();
     }
 
@@ -351,29 +355,31 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $idLista);
+        $stmt->bind_param('i', $idLista);
         $stmt->execute();
     }
 
-    public function addProductInList($idProdotto, $Nome, $Prezzo, $idLista){
+    public function addProductInList($Nome, $Prezzo, $idLista){
         $query = "
-            INSERT INTO prodotto (idProdotto, Nome, Prezzo, idLista)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO prodotto (Nome, Prezzo, idLista)
+            VALUES (?, ?, ?)
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssds', $idProdotto, $Nome, $Prezzo, $idLista);
+        $stmt->bind_param('sdi', $Nome, $Prezzo, $idLista);
         $stmt->execute();
 
-        $query = "
+        $query1 = "
             UPDATE lista l
             SET l.ImportoTotale = l.ImportoTotale + ?
             WHERE l.idLista = ?
         ";
 
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ds', $Prezzo, $IdLista);
-        $stmt->execute();
+        $stmt1 = $this->db->prepare($query1);
+        $stmt1->bind_param('di', $Prezzo, $IdLista);
+        $stmt1->execute();
+
+        return $stmt->insert_id;
     }
 
     public function newRequest($UserPartecipante, $idEvento, $idNotifica){
@@ -383,7 +389,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssb', $UserPartecipante, $idEvento, $idNotifica, false);
+        $stmt->bind_param('siib', $UserPartecipante, $idEvento, $idNotifica, false);
         $stmt->execute();
     }
 
@@ -395,7 +401,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ds', $Prezzo, $IdLista);
+        $stmt->bind_param('si', $UserPartecipante, $idEvento);
         $stmt->execute();
     }
 
@@ -406,18 +412,18 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ds', $UserPartecipante, $idEvento);
+        $stmt->bind_param('si', $UserPartecipante, $idEvento);
         $stmt->execute();
     }
 
     public function newNotification($idNotifica, $Tipo,	$Testo, $UserInvio, $UserRicevente, $idPost){
         $query = "
-            INSERT INTO notifica (idNotifica, Tipo, Testo, UserInvio, UserRicevente, idPost)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO notifica (Tipo, Testo, UserInvio, UserRicevente, idPost)
+            VALUES (?, ?, ?, ?, ?)
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssss', $idNotifica, $Tipo,	$Testo, $UserInvio, $UserRicevente, $idPost);
+        $stmt->bind_param('ssssi', $Tipo, $Testo, $UserInvio, $UserRicevente, $idPost);
         $stmt->execute();
     }
 
