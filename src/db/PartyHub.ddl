@@ -87,6 +87,7 @@ create table Post (
      NumeroLike int not null,
      NumeroCommenti int not null,
      Proprietario varchar(255) not null,
+     idEvento int not null,
      constraint ID_Post_ID primary key (idPost));
 
 create table Prodotto (

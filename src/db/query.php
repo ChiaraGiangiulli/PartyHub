@@ -88,6 +88,20 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getEventsFromUser($user){
+        $query = "
+            SELECT *
+            FROM evento
+            WHERE Organizzatore = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getUserFromUsername($username){
         $query = "
            SELECT *
@@ -103,14 +117,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function createPost($dataOra, $testo, $immagine, $personale, $proprietario){
+    public function createPost($dataOra, $testo, $immagine, $personale, $proprietario, $evento){
         $query = "
-            INSERT INTO post (DataOra, Testo, Immagine, Personale, NumeroLike, NumeroCommenti, Proprietario)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO post (DataOra, Testo, Immagine, Personale, NumeroLike, NumeroCommenti, Proprietario, idEvento)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ";
 
+        $numLike=0;
+        $numCommenti=0;
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssbiis', $dataOra, $testo, $immagine, $personale, 0, 0, $proprietario);
+        $stmt->bind_param('sssiiisi', $dataOra, $testo, $immagine, $personale, $numLike, $numCommenti, $proprietario, $evento);
         $stmt->execute();
         return $stmt->insert_id;
     }
@@ -124,6 +140,20 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
+    }
+
+    public function getPostsFromUser($user){
+        $query = "
+            SELECT *
+            FROM post
+            WHERE Proprietario = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function getFollowersPosts($user){
@@ -308,8 +338,9 @@ class DatabaseHelper{
             VALUES (?, ?, ?)
         ";
 
+        $numVoti=0;
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('isi', $idSondaggio, $Nome, 0);
+        $stmt->bind_param('isi', $idSondaggio, $Nome, $numVoti);
         $stmt->execute();
     }
 
@@ -343,8 +374,9 @@ class DatabaseHelper{
             VALUES ((SELECT MAX(idLista) FROM lista)+1, ?, ?)
         ";
 
+        $importo=0;
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ii', 0, $idEvento);
+        $stmt->bind_param('ii', $importo, $idEvento);
         $stmt->execute();
     }
 

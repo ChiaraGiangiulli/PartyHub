@@ -41,6 +41,10 @@
                 <label for="time">Time:</label>
                 <input type="time" class="form-control" id="time" name="time" required>
             </div>
+            <div class="mb-3 mt-3">
+                <label for="image">Image:</label>
+                <input type="text" class="form-control" id="image" placeholder="Address" name="image">
+            </div>
             <button type="submit" class="btn btn-success">Create</button>
         </form>
     </div>
