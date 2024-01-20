@@ -31,10 +31,10 @@
     <nav class="navbar navbar-expand bg-light justify-content-center">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "profilePosts.php"){echo "active";}?>" href="../api/userPosts.php">Posts</a>
+            <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/views/posts.php"){echo "active";}?>" href="/PartyHub/src/view/profilePost.php">Posts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "profileEvents.php"){echo "active";}?>" href="../api/userEvents.php">Events</a>
+            <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/api/userEvents.php"){echo "active";}?>" href="/PartyHub/src/api/userEvents.php">Events</a>
           </li>
         </ul>
     </nav>

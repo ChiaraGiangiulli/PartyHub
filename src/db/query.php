@@ -102,6 +102,20 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getEventFromId($id){
+        $query = "
+        SELECT Nome
+        FROM evento
+        WHERE idEvento = ?
+    ";
+
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getUserFromUsername($username){
         $query = "
            SELECT *
@@ -146,11 +160,13 @@ class DatabaseHelper{
         $query = "
             SELECT *
             FROM post
-            WHERE Proprietario = ?
+            WHERE Proprietario = ? AND Personale = ?
+            ORDER BY DataOra DESC
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $user);
+        $personale = 1;
+        $stmt->bind_param('si', $user, $personale);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
