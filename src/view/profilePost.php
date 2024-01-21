@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<?php require_once '../api/userPosts.php';
+<?php 
+include '../view/profile.php';
+include '../api/userPosts.php';
 $i=0;
 foreach ($posts as $post){
 ?>

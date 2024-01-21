@@ -1,6 +1,5 @@
 <?php 
 include '../db/query.php';
-require_once '../view/profile.php';
 
 $dbh = new DatabaseHelper("localhost", "root", "", "partyhub", 3306);
 $user = $_SESSION["user_id"];
