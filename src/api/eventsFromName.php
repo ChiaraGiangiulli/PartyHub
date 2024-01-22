@@ -7,9 +7,9 @@ require_once '../view/searchEvent.php';
 $dbh = new DatabaseHelper("localhost", "root", "", "partyhub", 3306);
 $name = $_POST['search'];
 $res = $dbh->getEventFromName($name);
-foreach ($res as $event) {
-    include '../view/event.php';
-}
+ 
+echo "<script>window.open('../view/event.php','_self')</script>"; 
+
 
 
 ?>

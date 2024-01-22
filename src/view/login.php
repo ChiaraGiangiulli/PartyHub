@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>PartyHub</title>
+  <title>PartyHub: <?php echo $templateParams["title"];?> </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <?php 
+      if(isset($templateParams["js"])):
+          foreach($templateParams["js"] as $script):
+    ?>
+      <script defer src="<?php echo $script; ?>"></script>
+    <?php
+          endforeach;
+      endif;
+    ?>
 </head>
 <body>
 <div id="logoMobile" class="text-center">

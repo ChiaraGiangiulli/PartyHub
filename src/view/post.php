@@ -1,6 +1,5 @@
-<?php require_once '../api/postsInHome.php';
-$i=0;
-foreach ($posts as $post){
+<?php 
+foreach ($templateParams["post"] as $post){
 ?>
 <div class="container-sm pt-5">
     <div class="row">
@@ -23,5 +22,4 @@ foreach ($posts as $post){
     <img class="img-fluid" src="/PartyHub/src/img/another.jpg" alt="another img">
 </div>
 <?php 
-$i=$i+1;
 } ?>
