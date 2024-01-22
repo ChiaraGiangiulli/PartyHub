@@ -18,8 +18,11 @@
       endif;
     ?>
 </head>
+<body>
+  
 <nav class="navbar navbar-expand bg-light">
-  <div class="col">
+<div class="row row-cols-3">
+  <div class="col-sm-4">
           <ul class="navbar-nav">
               <li class="nav-item">
                   <a class="nav-link"
@@ -29,10 +32,10 @@
                       <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
                     </svg></a>
               </li>
-            </div>
           </ul>
-            <div class="col">
-            <ul class="navbar-nav justify-content-center">
+    </div>
+    <div class="col-sm-4">
+          <ul class="navbar-nav justify-content-center">
             <li class="nav-item">
               <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "base.php"){echo "active";}?>"
                 href="/PartyHub/src/index.php">
@@ -55,11 +58,11 @@
                   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
                 </svg></a>
             </li>
-            </ul>
-            </div>
-            <div class="col">
-            <ul class="navbar-nav justify-content-end">
-            <li class="nav-item">
+        </ul>
+    </div>
+    <div class="col-sm-4">
+        <ul class="navbar-nav justify-content-end">
+          <li class="nav-item">
             <a class="nav-link" 
                 href="/PartyHub/src/api/logout.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
