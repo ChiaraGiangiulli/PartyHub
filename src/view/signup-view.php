@@ -13,6 +13,7 @@
     ?>
       <script defer src="<?php echo $script; ?>"></script>
     <?php
+        echo $script;
           endforeach;
       endif;
     ?>
@@ -20,7 +21,7 @@
 <body>
     <div id="logoMobile" class="text-center">
         <a href="./index.php">
-        <img src="../img/logo.png" alt="PartyHub" class="img w-50" title="PartyHub logo" id="logo">
+        <img src="img/logo.png" alt="PartyHub" class="img w-50" title="PartyHub logo" id="logo">
         </a>
     </div>
     <div class="container-sm p-5 border">

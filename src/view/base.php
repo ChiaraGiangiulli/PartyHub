@@ -71,39 +71,25 @@
             </div>
 
     </nav>
-</body> 
 
-    <div class="row">
-        <div class="col-sm-12">
-            <main class="container">
                 <?php
                     require($templateParams["contenuto"]);
                 ?>
-            </main>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <main class="container">
+
                 <?php
                   if(isset($templateParams["contenutoProfilo"])){
                     require($templateParams["contenutoProfilo"]);
                   }
                 ?>
-            </main>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <main class="container">
+
+
                 <?php
                   if(isset($templateParams["contenutoSearch"])){
                     require($templateParams["contenutoSearch"]);
                   }
                 ?>
-            </main>
-        </div>
-    </div>
+
+
 </body> 
 </html>
