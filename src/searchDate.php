@@ -1,8 +1,8 @@
 <?php
 require_once("database.php");
-$templateParams["titolo"] = "Search profile";
+$templateParams["titolo"] = "Search date";
 $templateParams["contenuto"] = "view/search-view.php";
-$templateParams["contenutosearch"] = "view/searchDate-view.php";
+$templateParams["contenutoSearch"] = "view/searchDate-view.php";
 
 require("view/base.php");
 ?>

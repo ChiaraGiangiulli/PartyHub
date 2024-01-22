@@ -13,7 +13,7 @@ if(isset($_POST['username'], $_POST['psw'])) {
 } else { 
    echo "Richiesta non valida";
 }
-echo "<script>window.open('../../src/index.php','_self')</script>";
+echo "<script>window.open('../index.php','_self')</script>";
 
 
 ?>
