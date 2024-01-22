@@ -9,14 +9,12 @@
 </head>
 <body>
 <div id="logoMobile" class="text-center">
-    <a href="./index.php">
-        <img src="../img/logo.png" alt="PartyHub" class="img w-50" title="PartyHub logo" id="logo">
-    </a>
+    <img src="../img/logo.png" alt="PartyHub" class="img w-50" title="PartyHub logo" id="logo">
 </div>
 <div class="container-sm p-5 border">
     <center><h1>Successful Signup</h1></center>
     <center><h2>Return to:</h2></center>
-    <form action="/PartyHub/src/view/index.php">
+    <form action="/PartyHub/src/index.php">
     <center><button type="submit" class="btn btn-success">Login</button></center>
 </form>
 </div>

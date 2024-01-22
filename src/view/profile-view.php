@@ -5,7 +5,7 @@
   </svg>
 </div>
 <div class="col-sm-12 text-center mt-3">
-  <?php print_r($templateParams["profilo"]);?>
+  <?php print_r($templateParams["profilo"][0]['Username']);?>
 </div>
 <div class="col-sm-12 text-center mt-4 mb-4">
 <div id="profileForm" class="btn-group">
@@ -28,10 +28,10 @@
 <nav class="navbar navbar-expand bg-light justify-content-center">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/view/profilePosts.php"){echo "active";}?>" href="/PartyHub/src/view/profilePost.php">Posts</a>
+        <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/profilePost.php"){echo "active";}?>" href="/PartyHub/src/profilePost.php">Posts</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/api/userEvents.php"){echo "active";}?>" href="/PartyHub/src/api/userEvents.php">Events</a>
+        <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/profileEvent.php"){echo "active";}?>" href="/PartyHub/src/profileEvent.php">Events</a>
       </li>
     </ul>
 </nav>
