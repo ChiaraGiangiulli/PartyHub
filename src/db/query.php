@@ -88,7 +88,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getEventsFromUser($user){
+    public function getEventFromUser($user){
         $query = "
             SELECT *
             FROM evento
@@ -125,6 +125,20 @@ class DatabaseHelper{
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getUsernameFromUser($user){
+        $query = "
+           SELECT *
+           FROM utente u
+           WHERE u.Username = ? OR u.Nome = ? OR u.Cognome = ? OR u.Email = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssss', $user, $user, $user, $user);
         $stmt->execute();
         $result = $stmt->get_result();
 

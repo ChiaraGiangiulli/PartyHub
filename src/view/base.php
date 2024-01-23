@@ -93,9 +93,15 @@
 ?>
 
 <?php
-  if(isset($templateParams["risultatoSearch"])){
-    foreach($templateParams["risultatoSearch"] as $event){
+  if(isset($templateParams["risultatoSearchEvent"])){
+    foreach($templateParams["risultatoSearchEvent"] as $event){
       print_r($event['Nome']); ?></br>
+    <?php
+    }
+  }
+  if(isset($templateParams["risultatoSearchProfile"])){
+    foreach($templateParams["risultatoSearchProfile"] as $profile){
+      print_r($profile['Username']); ?></br>
     <?php
     }
   }

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand bg-light">
-  <div class="col-sm-12">
+  <div class="col-12">
       <ul class="navbar-nav justify-content-center">
         <li class="nav-item">
           <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "searchProfile.php"){echo "active";}?>" 
