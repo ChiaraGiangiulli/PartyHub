@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <div class="modal-body">
-            <?php include "../api/followersList.php" ?>
+            
           </div>
         </div>
       </div>
@@ -20,7 +20,7 @@
 				      <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <div class="modal-body">
-            <?php include "../api/followingList.php" ?>
+            
         </div>
       </div>
     </div>
