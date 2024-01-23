@@ -8,16 +8,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.15.0/font/bootstrap-icons.css" rel="stylesheet">
-<?php 
-    if(isset($templateParams["js"])):
-    foreach($templateParams["js"] as $script):
-?>
-    <script defer src="<?php echo $script; ?>"></script>
-<?php
-    endforeach;
-    endif;
-?>
 </head>
+
 <body>
 
 <nav class="navbar navbar-expand bg-light">
@@ -79,8 +71,11 @@
                 Vestibulum at eros</li>
             </ul>
         </div>
-                </div>
-            </div>
+    </div>
+</div>
+<div class="row">
+    <center><button type="button" class="btn btn-success">Request to join</button></center>
+</div>
 
 </body>
 </html>
