@@ -73,9 +73,23 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <center><button type="button" class="btn btn-success">Request to join</button></center>
-</div>
+
+<nav class="navbar navbar-expand bg-light justify-content-center">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/profilePost.php"){echo "active";}?>" href="/PartyHub/src/profilePost.php">Planning</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/eventBudget.php"){echo "active";}?>" href="/PartyHub/src/eventBudget.php?id=<?php print_r($templateParams['evento'][0]['idEvento'])?>">Budget</a>
+        </li>
+    </ul>
+</nav>
+
+<?php
+  if(isset($templateParams["contenutoEvent"])){
+    require($templateParams["contenutoEvent"]);
+  }
+?>
 
 </body>
 </html>

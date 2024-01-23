@@ -362,6 +362,20 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function getSurveyFromEvent($evento){
+        $query = "
+            SELECT *
+            FROM sondaggio
+            WHERE idEvento = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $evento);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function addOptionInSurvey($idSondaggio, $Nome){
         $query = "
             INSERT INTO opzione (idSondaggio, Nome, NumeroVoti)
