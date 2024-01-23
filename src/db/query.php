@@ -104,7 +104,7 @@ class DatabaseHelper{
 
     public function getEventFromId($id){
         $query = "
-        SELECT Nome
+        SELECT *
         FROM evento
         WHERE idEvento = ?
     ";
