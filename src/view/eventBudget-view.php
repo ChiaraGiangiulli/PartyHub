@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php 
 
-foreach ($templateParams["sondaggi"] as $sondaggio){
+foreach ($templateParams["spese"] as $listaSpesa){
 ?>
-<p><?php echo $sondaggio['idSondaggio']?></p>
+<p><?php echo $listaSpesa['idLista']?></p>
 <?php }
 ?>

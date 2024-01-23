@@ -18,7 +18,7 @@
 </head>
 <body>
 <div id="logoMobile" class="text-center">
-  <img src="img/logo.png" alt="PartyHub" class="img w-50" title="PartyHub logo" id="logo">
+  <img src="img/logo.png" alt="PartyHub" class="img-fluid w-50" title="PartyHub logo" id="logo">
 </div>
 <div class="container-sm p-5 border">
   <h2>Login</h2>

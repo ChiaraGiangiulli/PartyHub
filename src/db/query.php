@@ -435,6 +435,20 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function getListFromEvent($evento){
+        $query = "
+            SELECT *
+            FROM lista
+            WHERE idEvento = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $evento);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function addProductInList($Nome, $Prezzo, $idLista){
         $query = "
             INSERT INTO prodotto (Nome, Prezzo, idLista)
