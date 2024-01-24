@@ -254,6 +254,20 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function checkFollow($followerId, $followingId){
+        $query = "
+            SELECT *
+            FROM segui 
+            WHERE Follower = ? AND Following = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss', $followerId, $followingId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function addLike($user, $post){
         $query = "
             INSERT INTO mipiace (UserMiPiace, IdPost)

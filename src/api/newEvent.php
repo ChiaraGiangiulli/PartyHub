@@ -9,7 +9,5 @@ if(isset($_POST['name'], $_POST['address'], $_POST['number'], $_POST['city'], $_
         echo "impossibile creare evento";
         echo "<script>window.open('../index.php','_self')</script>";
     }
-        
-    
 }
 ?>
