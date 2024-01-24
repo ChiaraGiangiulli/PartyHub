@@ -19,10 +19,10 @@
             </div>
             <div class="mb-3 mt-3">
                 <label for="image">Image:</label>
-                <input type="text" class="form-control" id="image" placeholder="Image" name="image">
+                <input type="file" class="form-control" id="image" name="image" multiple />
             </div>
             <div class="mb-3 mt-3">
-                <label for="event">Image:</label>
+                <label for="event">Event:</label>
                 <input type="text" class="form-control" id="event" placeholder="Name of the event" name="event">
             </div>
             <button type="submit" class="btn btn-success">Add</button>

@@ -1,4 +1,3 @@
-
 document.getElementById("newEvent").addEventListener("click", function() {
     window.open('/PartyHub/src/view/createEvent.php','_self'); 
 });

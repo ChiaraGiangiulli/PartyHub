@@ -42,8 +42,8 @@
                 <input type="time" class="form-control" id="time" name="time" required>
             </div>
             <div class="mb-3 mt-3">
-                <label for="image">Image:</label>
-                <input type="text" class="form-control" id="image" placeholder="Address" name="image">
+                <label for="image">Cover image:</label>
+                <input type="file" class="form-control" id="image" name="image" multiple />
             </div>
             <button type="submit" class="btn btn-success">Create</button>
         </form>

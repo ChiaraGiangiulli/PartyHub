@@ -57,6 +57,10 @@
                 <label for="rpwd">Confirm Password:</label>
                 <input type="password" class="form-control" id="rpwd" placeholder="Confirm password" name="rpwd" required>
             </div>
+            <div class="mb-3 mt-3">
+                <label for="image">Profile image:</label>
+                <input type="file" class="form-control" id="image" name="image" multiple />
+            </div>
             <button type="submit" class="btn btn-success">Signup</button>
         </form>
     </div>
