@@ -340,6 +340,20 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function getPostsComments($idPost){
+        $query = "
+            SELECT *
+            FROM commento
+            WHERE idPost = ? 
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idPost);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function addSurvey($idEvento){
         $query = "
             INSERT INTO sondaggio (idEvento)
