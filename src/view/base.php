@@ -95,14 +95,16 @@
 
 <?php
   if(isset($templateParams["risultatoSearchEvent"])){
-    foreach($templateParams["risultatoSearchEvent"] as $event){
-      print_r($event['Nome']); ?></br>
+    foreach($templateParams["risultatoSearchEvent"] as $event){ ?>
+      <a href="otherUsers.php?id=<?php print_r($event['idEvento'])?>">
+      <?php print_r($event['Nome']); ?></br></a>
     <?php
     }
   }
-  if(isset($templateParams["risultatoSearchProfile"])){
-    foreach($templateParams["risultatoSearchProfile"] as $profile){
-      print_r($profile['Username']); ?></br>
+  if(isset($templateParams["risultatoSearchProfile"])){  
+    foreach($templateParams["risultatoSearchProfile"] as $profile){ ?>
+      <a href="otherUsers.php?user=<?php print_r($profile['Username'])?>">
+      <?php print_r($profile['Username']); ?></br></a>
     <?php
     }
   }

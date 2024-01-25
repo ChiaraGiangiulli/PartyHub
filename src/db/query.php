@@ -186,14 +186,14 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getFollowersPosts($user){
+    public function getFollowingPosts($user){
         $query = "
             SELECT *
             FROM post p
             WHERE p.Personale = ? AND p.proprietario IN (
-                SELECT s.Follower 
+                SELECT s.Following 
                 FROM segui s
-                WHERE s.Following = ? )
+                WHERE s.Follower = ? )
         ";
 
         $stmt = $this->db->prepare($query);
