@@ -11,6 +11,7 @@ else {
   $templateParams["titolo"] = "Home";
   $templateParams["contenuto"] = "view/post.php";
   $templateParams["post"] = $dbh->getFollowersPosts($_SESSION["userId"]);
+  $templateParams["js"] = array("js/like.js");
 
   require("view/base.php");
 }

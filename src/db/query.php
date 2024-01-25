@@ -310,6 +310,20 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function checkLike($user, $post){
+        $query = "
+            SELECT *
+            FROM mipiace
+            WHERE UserMiPiace = ? AND idPost = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $user, $post);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function addComment($DataOra, $Testo, $idPost, $UserCommento){
         $query = "
             INSERT INTO commento (DataOra, Testo, idPost, UserCommento)
