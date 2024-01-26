@@ -204,6 +204,21 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPostForEvent($idEvento){
+        $query = "
+            SELECT *
+            FROM post p
+            WHERE p.Personale = ? AND p.idEvento = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $personale = 0;
+        $stmt->bind_param('ii', $personale, $idEvento);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function follow($followerId, $followingId){
         $query = "
             INSERT INTO segui (Follower, Following)

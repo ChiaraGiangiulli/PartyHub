@@ -11,7 +11,7 @@
 <body>
     <div class="container-sm p-5 border">
         <h2>New Post:</h2>
-        <form id="signup" action="/PartyHub/src/api/newPost.php" method="post">
+        <form id="signup" action="/PartyHub/src/api/newPost.php?pers=1" method="post">
 
             <div class="mb-3 mt-3">
                 <label for="caption">Caption:</label>
