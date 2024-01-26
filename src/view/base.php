@@ -96,7 +96,7 @@
 <?php
   if(isset($templateParams["risultatoSearchEvent"])){
     foreach($templateParams["risultatoSearchEvent"] as $event){ ?>
-      <a href="otherUsers.php?id=<?php print_r($event['idEvento'])?>">
+      <a href="event.php?id=<?php print_r($event['idEvento'])?>">
       <?php print_r($event['Nome']); ?></br></a>
     <?php
     }
