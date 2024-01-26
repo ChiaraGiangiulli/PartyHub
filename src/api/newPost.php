@@ -16,7 +16,7 @@ if(isset($_POST['event'])){
     foreach ($res as $risultato) {
         $event= $risultato['idEvento'];
     }
-    if($dbh->createPost(time(),$_POST['caption'], $image, $_GET['pers'], $user, $event[0]) > 0){
+    if($dbh->createPost(time(),$_POST['caption'], $image, $_GET['pers'], $user, $event) > 0){
         echo "post creato con successo";
         echo "<script>window.open('../index.php','_self')</script>";
     }
