@@ -86,9 +86,9 @@
 </nav>
 
 <?php
-  if(isset($templateParams["contenutoEvent"])){
+    if(isset($templateParams["contenutoEvent"])){
     require($templateParams["contenutoEvent"]);
-  }
+    }
 ?>
 
 </body>
