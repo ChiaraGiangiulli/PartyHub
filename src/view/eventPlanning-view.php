@@ -37,6 +37,9 @@ foreach ($templateParams["post"] as $post){
     </div>
     <div class="row">
         <img class="img-fluid" src="/PartyHub/src/img/another.jpg" alt="another img">
+        <div class="col-sm-12">
+                <p><?php print_r($post['Testo']) ?><p>
+            </div>
         <div class="col-1">
             <div class="offcanvas offcanvas-bottom" id="demo">
                 <div class="offcanvas-header">
@@ -74,9 +77,6 @@ foreach ($templateParams["post"] as $post){
                 </svg>
             </button>
         </div> 
-        <div class="col-sm-12">
-            <p><?php print_r($post['Testo']) ?><p>
-        </div>
     </div>
 
 </div>
