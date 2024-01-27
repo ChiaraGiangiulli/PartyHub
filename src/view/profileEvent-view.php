@@ -3,7 +3,7 @@
 
 foreach ($templateParams["eventi"] as $event){
 ?>
-<div class="container-sm pt-5">
+<div class="container-sm border pt-3 pb-3">
     <div class="row">
         <div class="col-sm-12">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar4-event" viewBox="0 0 16 16">
