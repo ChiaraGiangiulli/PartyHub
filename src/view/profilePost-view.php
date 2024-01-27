@@ -2,7 +2,7 @@
 <?php 
 foreach ($templateParams["post"] as $post){
 ?>
-<div class="container-sm pt-5 pb-5">
+<div class="container-sm border pt-3 pb-3">
     <div class="row">
         <div class="col-sm-12">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar4-event" viewBox="0 0 16 16">
@@ -12,7 +12,13 @@ foreach ($templateParams["post"] as $post){
             <a href="event.php?id=<?php print_r($post['idEvento']);?>"><?php print_r($dbh->getEventFromId($post['idEvento'])[0]['Nome']);?></a>
         </div>
     </div>
-    <img class="img-fluid" src="/PartyHub/src/img/another.jpg" alt="another img">
+    <?php if($dbh->getPostFromId($post['idPost'])[0]['Immagine'] != null){
+        $image = $dbh->getPostFromId($post['idPost'])[0]['Immagine']; 
+    ?>
+    <img class="img-fluid" src="/PartyHub/src/img/<?php print_r($image)?>" alt="post image">
+    <?php 
+        } 
+    ?>
     <div class="row">
         <div class="col-1">
         <button type="button" class="btn like-button" id="like" data-postid="<?php echo $post['idPost']; ?>">

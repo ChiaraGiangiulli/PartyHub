@@ -13,7 +13,13 @@ foreach ($templateParams["eventi"] as $event){
         <a href="event.php?id=<?php print_r($event['idEvento']);?>"><?php print_r($dbh->getEventFromId($event['idEvento'])[0]['Nome']);?></a>
         </div>
     </div>
-    <img class="img-fluid" src="/PartyHub/src/img/another.jpg" alt="another img">
+    <?php if($dbh->getEventFromId($event['idEvento'])[0]['Copertina'] != null){
+            $image = $dbh->getEventFromId($event['idEvento'])[0]['Copertina']; 
+        ?>
+        <img class="img w-25 h-25 rounded" src="/PartyHub/src/img/<?php print_r($image)?>" alt="event image">
+        <?php 
+        } 
+        ?>
 </div>
 <?php }
 ?>

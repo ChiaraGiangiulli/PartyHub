@@ -4,7 +4,7 @@ $templateParams["titolo"] = "Profile";
 $templateParams["contenutoProfilo"] = "view/profilePost-view.php";
 $templateParams["profilo"] = $dbh->getUserFromUsername($_GET['user']);
 $templateParams["post"] = $dbh->getPostsFromUser($_GET['user']);
-$templateParams["js"] = array("js/comments.js");
+$templateParams["js"] = array("js/like.js", "js/comments.js");
 if($templateParams["profilo"][0]['Username'] == $_SESSION['userId']){
     $templateParams["contenuto"] = "view/profile-view.php";
     require("view/base.php");
