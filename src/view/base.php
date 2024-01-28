@@ -133,7 +133,17 @@
             <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
         </svg>
         <a href="otherUsers.php?user=<?php print_r($notification['UserInvio'])?>"><?php print_r($notification['UserInvio'])?></a>
-                    : <?php print_r($notification['Testo']) ?>
+                    : <?php print_r($notification['Testo']); 
+        if($notification['Tipo'] == "Richiesta Partecipazione Evento" && 
+            (count($dbh->requestFromNotification($notification['idNotifica'])) > 0 
+              && $dbh->requestFromNotification($notification['idNotifica'])[0]['Accettata'] == false)){ ?>
+          <div class="col-sm-6 text-center mb-1">
+              <button type="button" id="accept" data-notificationid="<?php print_r($notification['idNotifica']) ?>" class="btn btn-outline-secondary">Accept</button>
+          </div>
+          <div class="col-sm-6 text-center mb-1">
+              <button type="button" id="deny" data-notificationid="<?php print_r($notification['idNotifica']) ?>" class="btn btn-outline-secondary">Deny</button>
+          </div>
+      <?php } ?>
     <?php } ?>
     </p>
   </div>
