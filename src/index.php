@@ -11,7 +11,7 @@ else {
   $templateParams["titolo"] = "Home";
   $templateParams["contenuto"] = "view/post.php";
   $templateParams["post"] = $dbh->getFollowingPosts($_SESSION["userId"]);
-  $templateParams["js"] = array("js/like.js", "js/comments.js");
+  $templateParams["js"] = array("js/like.js", "js/comments.js", "js/notification.js");
 
   require("view/base.php");
 }
