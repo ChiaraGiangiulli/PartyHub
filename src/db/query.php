@@ -44,6 +44,11 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ssissssiss', $nome, $indirizzo, $civico, $citta, $paese, $data, $ora, $numeroPartecipanti, $organizzatore, $immagine);
         $stmt->execute();
+
+        $testo = "ha creato un nuovo evento: ".$nome;
+        foreach($this->getFollowers($organizzatore) as $follower){
+            $this->newNotification("Nuovo Evento", $testo, $organizzatore, $follower['Follower'], null, 0);
+        }
         return $stmt->insert_id;
     }
 
@@ -241,6 +246,9 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $followerId, $followingId);
         $stmt->execute();
+
+        $testo = "ha iniziato a seguirti";
+        $this->newNotification("Follow", $testo, $followerId, $followingId, null, 0);
     }
 
     public function unfollow($followerId, $followingId){
@@ -315,6 +323,9 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $post);
         $stmt->execute();
+
+        $testo = "ha messo like al tuo post: ".($this->getPostFromId($post)[0]['Testo']);
+        $this->newNotification("Like", $testo, $user, $this->getPostFromId($post)[0]['Proprietario'], $post, 0);
     }
 
     public function removeLike($user, $post){
@@ -366,15 +377,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addComment($DataOra, $Testo, $idPost, $UserCommento){
+    public function addComment($dataOra, $testo, $idPost, $userCommento){
         $query = "
             INSERT INTO commento (DataOra, Testo, idPost, UserCommento)
             VALUES (?, ?, ?, ?)
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssis', $DataOra, $Testo, $idPost, $UserCommento);
+        $stmt->bind_param('ssis', $dataOra, $testo, $idPost, $userCommento);
         $stmt->execute();
+        $stmt->insert_id;
 
         $query1 = "
             UPDATE post p
@@ -386,7 +398,9 @@ class DatabaseHelper{
         $stmt1->bind_param('i', $idPost);
         $stmt1->execute();
 
-        return $stmt->insert_id;
+        $testo = "ha commentato il tuo post: ".($this->getPostFromId($idPost)[0]['Testo']);
+        $this->newNotification("Commento", $testo, $userCommento, $this->getPostFromId($idPost)[0]['Proprietario'], $idPost, 0);
+
     }
 
     public function removeComment($idCommento, $idPost){
@@ -460,7 +474,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addOptionInSurvey($idSondaggio, $Nome){
+    public function addOptionInSurvey($idSondaggio, $nome){
         $query = "
             INSERT INTO opzione (idSondaggio, Nome, NumeroVoti)
             VALUES (?, ?, ?)
@@ -468,11 +482,11 @@ class DatabaseHelper{
 
         $numVoti=0;
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('isi', $idSondaggio, $Nome, $numVoti);
+        $stmt->bind_param('isi', $idSondaggio, $nome, $numVoti);
         $stmt->execute();
     }
 
-    public function addVote($idSondaggio, $Nome){
+    public function addVote($idSondaggio, $nome){
         $query = "
             UPDATE opzione o
             SET o.NumeroVoti = o.NumeroVoti + 1
@@ -480,11 +494,11 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('is', $idSondaggio, $Nome);
+        $stmt->bind_param('is', $idSondaggio, $nome);
         $stmt->execute();
     }
 
-    public function removeVote($idSondaggio, $Nome){
+    public function removeVote($idSondaggio, $nome){
         $query = "
             UPDATE opzione o
             SET o.NumeroVoti = o.NumeroVoti + 1
@@ -492,7 +506,7 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('is', $idSondaggio, $Nome);
+        $stmt->bind_param('is', $idSondaggio, $nome);
         $stmt->execute();
     }
     
@@ -533,14 +547,14 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addProductInList($Nome, $Prezzo, $idLista){
+    public function addProductInList($nome, $prezzo, $idLista){
         $query = "
             INSERT INTO prodotto (Nome, Prezzo, idLista)
             VALUES (?, ?, ?)
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sdi', $Nome, $Prezzo, $idLista);
+        $stmt->bind_param('sdi', $nome, $prezzo, $idLista);
         $stmt->execute();
 
         $query1 = "
@@ -556,18 +570,19 @@ class DatabaseHelper{
         return $stmt->insert_id;
     }
 
-    public function newRequest($UserPartecipante, $idEvento, $idNotifica){
+    public function newRequest($user, $idEvento, $idNotifica){
         $query = "
             INSERT INTO richiesta (UserPartecipante, idEvento, idNotifica, Accettata)
             VALUES (?, ?, ?, ?)
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('siib', $UserPartecipante, $idEvento, $idNotifica, false);
+        $accettata = 0;
+        $stmt->bind_param('siib', $user, $idEvento, $idNotifica, $accettata);
         $stmt->execute();
     }
 
-    public function requestAccepted($UserPartecipante, $idEvento){
+    public function requestAccepted($user, $idEvento){
         $query = "
             UPDATE richiesta r
             SET r.Accettata = true
@@ -575,30 +590,109 @@ class DatabaseHelper{
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('si', $UserPartecipante, $idEvento);
+        $stmt->bind_param('si', $user, $idEvento);
+        $stmt->execute();
+
+        $query = "
+            UPDATE evento e
+            SET e.NumeroPartecipanti = e.NumeroPartecipanti + 1
+            WHERE e.idEvento = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idEvento);
         $stmt->execute();
     }
 
-    public function requestDenied($UserPartecipante, $idEvento){
+    public function requestDenied($user, $idEvento){
         $query = "
             DELETE FROM richiesta 
             WHERE r.UserPartecipante = ? AND r.idEvento = ?
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('si', $UserPartecipante, $idEvento);
+        $stmt->bind_param('si', $user, $idEvento);
         $stmt->execute();
     }
 
-    public function newNotification($idNotifica, $Tipo,	$Testo, $UserInvio, $UserRicevente, $idPost){
+    public function isAccepted($user, $idEvento){
         $query = "
-            INSERT INTO notifica (Tipo, Testo, UserInvio, UserRicevente, idPost)
-            VALUES (?, ?, ?, ?, ?)
+            SELECT *
+            FROM richiesta r
+            WHERE r.UserPartecipante = ? AND r.idEvento = ? AND r.Accettata = ?
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssi', $Tipo, $Testo, $UserInvio, $UserRicevente, $idPost);
+        $accettata = 1;
+        $stmt->bind_param('sii', $user, $idEvento, $accettata);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function newNotification($Tipo,	$Testo, $UserInvio, $UserRicevente, $idPost){
+        $query = "
+            INSERT INTO notifica (Tipo, Testo, UserInvio, UserRicevente, idPost, Vista)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $seen = 0;
+        $stmt->bind_param('ssssii', $Tipo, $Testo, $UserInvio, $UserRicevente, $idPost, $seen);
+        $stmt->execute();
+        return $stmt->insert_id;
+    }
+
+    public function getNotificationsFromUser($user){
+        $query = "
+            SELECT *
+            FROM notifica
+            WHERE UserRicevente = ?
+            ORDER BY idNotifica DESC
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+
+    }
+
+    public function setNotificationSeen($idNotifica){
+        $query = "
+            UPDATE notifica
+            SET Vista = true
+            WHERE idNotifica = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idNotifica);
         $stmt->execute();
     }
 
+    public function requestFromNotification($idNotifica){
+        $query = "
+            SELECT *
+            FROM richiesta
+            WHERE idNotifica = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idNotifica);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deleteNotification($idNotifica){
+        $query = "
+            DELETE FROM notifica
+            WHERE idNotifica = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $user, $idNotifica);
+        $stmt->execute();
+    }
 }

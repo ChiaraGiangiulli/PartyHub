@@ -70,6 +70,7 @@ create table Notifica (
      UserInvio varchar(255) not null,
      UserRicevente varchar(255) not null,
      idPost int,
+     Vista boolean not null,
      constraint ID_Notifica_ID primary key (idNotifica));
 
 create table Opzione (

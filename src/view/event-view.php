@@ -99,6 +99,9 @@ return new bootstrap.Tooltip(tooltipTriggerEl)
     </div>
 </div>
 
+<?php if(count($dbh->isAccepted($_SESSION['userId'],$templateParams['evento'][0]['idEvento'])) > 0
+            || $templateParams['evento'][0]['Organizzatore'] == $_SESSION['userId']){
+    ?>
 <nav class="navbar navbar-expand bg-light justify-content-center">
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -114,6 +117,15 @@ return new bootstrap.Tooltip(tooltipTriggerEl)
     if(isset($templateParams["contenutoEvent"])){
     require($templateParams["contenutoEvent"]);
     }
+?>
+
+<?php 
+}
+else{ ?>
+    <div class="col-sm-12 text-center mt-5">
+        <button type="button" data-eventid="<?php print_r($templateParams['evento'][0]['idEvento'])?>"id="requestEvent" class="btn btn-outline-secondary">Request to join</button>
+    </div>
+<?php }
 ?>
 <?php require_once("modal1.php");?>
 </body>
