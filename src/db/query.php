@@ -79,10 +79,10 @@ class DatabaseHelper{
 
     public function getEventFromName($name){
         $query = "
-           SELECT *
-           FROM evento e
-           WHERE e.Nome = ?
-           ORDER BY e.Data DESC
+            SELECT *
+            FROM evento e
+            WHERE e.Nome = ?
+            ORDER BY e.Data DESC
         ";
 
         $stmt = $this->db->prepare($query);
@@ -123,9 +123,9 @@ class DatabaseHelper{
 
     public function getUserFromUsername($username){
         $query = "
-           SELECT *
-           FROM utente u
-           WHERE u.Username = ?
+            SELECT *
+            FROM utente u
+            WHERE u.Username = ?
         ";
 
         $stmt = $this->db->prepare($query);
@@ -137,9 +137,9 @@ class DatabaseHelper{
     }
     public function getUsernameFromUser($user){
         $query = "
-           SELECT *
-           FROM utente u
-           WHERE u.Username = ? OR u.Nome = ? OR u.Cognome = ? OR u.Email = ?
+            SELECT *
+            FROM utente u
+            WHERE u.Username = ? OR u.Nome = ? OR u.Cognome = ? OR u.Email = ?
         ";
 
         $stmt = $this->db->prepare($query);
@@ -190,6 +190,19 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    public function getOpzioniFromSondaggio($idSondaggio){
+        $query = "
+            SELECT *
+            FROM opzione
+            WHERE idSondaggio = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idSondaggio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     public function getFollowingPosts($user){
         $query = "
@@ -219,21 +232,6 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $personale = 0;
         $stmt->bind_param('ii', $personale, $idEvento);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function getPostFromId($idPost){
-        $query = "
-            SELECT *
-            FROM post p
-            WHERE p.idPost = ?
-        ";
-
-        $stmt = $this->db->prepare($query);
-        $personale = 0;
-        $stmt->bind_param('i', $idPost);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -350,6 +348,20 @@ class DatabaseHelper{
         $stmt->bind_param('i', $post);
         $stmt->execute();
     }
+    
+    public function voteSondaggio($idSondaggio,$nomeOpzione){
+        
+        $query = "
+            UPDATE opzione o
+            SET o.NumeroVoti = o.NumeroVoti + 1
+            WHERE o.idSondaggio = ? AND o.Nome = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('is', $idSondaggio,$nomeOpzione);
+        $stmt->execute();
+    }
+    
 
     public function checkLike($user, $post){
         $query = "
