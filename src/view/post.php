@@ -1,7 +1,7 @@
 <?php 
 foreach ($templateParams["post"] as $post){
 ?>
-<div class="container-sm border pt-3 pb-3">
+<div class="container-sm border pt-3 pb-3 mb-3 mt-3">
     <div class="row">
         <div class="col-sm-12">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -44,7 +44,7 @@ foreach ($templateParams["post"] as $post){
         <div class="col-1">
             <div class="offcanvas offcanvas-bottom" id="comments">
                 <div class="offcanvas-header">
-                    <h1 class="offcanvas-title">Commenti</h1>
+                    <h3 class="offcanvas-title">Commenti</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
                 </div>
                 <div class="offcanvas-body" id=offcanvasBody>

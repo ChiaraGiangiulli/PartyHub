@@ -190,15 +190,17 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    public function getOpzioniFromSondaggio($idSondaggio){
+
+    public function getPostFromId($idPost){
         $query = "
             SELECT *
-            FROM opzione
-            WHERE idSondaggio = ?
+            FROM post p
+            WHERE p.idPost = ?
         ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $idSondaggio);
+        $personale = 0;
+        $stmt->bind_param('i', $idPost);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -484,6 +486,20 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('isi', $idSondaggio, $nome, $numVoti);
         $stmt->execute();
+    }
+
+    public function getOpzioniFromSondaggio($idSondaggio){
+        $query = "
+            SELECT *
+            FROM opzione
+            WHERE idSondaggio = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idSondaggio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function addVote($idSondaggio, $nome){
