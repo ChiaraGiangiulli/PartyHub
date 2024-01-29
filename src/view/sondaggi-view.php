@@ -27,7 +27,13 @@ foreach ($templateParams["sondaggi"] as $sondaggio){
             <thead>
                 <tr>
                     <th><?php print_r($opzione['Nome'])?></th>
-                    <th><div class="progress"> <div class="progress-bar bg-success" role="progressbar" style="width:<?php print_r(($opzione['NumeroVoti']*100)/$numeroVoti)?>%" aria-valuenow="<?php print_r(($opzione['NumeroVoti']*100)/$numeroVoti)?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    <?php if($numeroVoti > 0){ ?>
+                        <th><div class="progress"> <div class="progress-bar bg-success" role="progressbar" style="width:<?php print_r(($opzione['NumeroVoti']*100)/$numeroVoti)?>%" aria-valuenow="<?php print_r(($opzione['NumeroVoti']*100)/$numeroVoti)?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    <?php }
+                        else{ ?>
+                            <th><div class="progress"> <div class="progress-bar bg-success" role="progressbar" style="width:0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        <?php } ?>
+                    
                     </div></div></th>
                 </tr>
             </thead>
