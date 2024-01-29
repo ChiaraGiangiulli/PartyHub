@@ -2,9 +2,8 @@
 ?>
 <div class="input-group">
     <form action="/PartyHub/src/api/newPost.php?pers=0&img=null&evnt=<?php echo $idEvent ?>" method="post">
-    <input type="text" class="form-control" id="caption" placeholder="Join the conversation." name="caption">
-
-    <button class="btn btn-success" type="submit">Post</button>
+        <input type="text" class="form-control" id="caption" placeholder="Join the conversation." name="caption">
+        <button class="btn btn-success" type="submit">Post</button>
     </form>
     <button id="newsurvey" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#newSurvey">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
