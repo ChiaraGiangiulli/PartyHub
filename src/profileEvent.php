@@ -4,6 +4,7 @@ $templateParams["titolo"] = "Profile";
 $templateParams["profilo"] = $dbh->getUserFromUsername($_GET['user']);
 $templateParams["contenutoProfilo"] = "view/profileEvent-view.php";
 $templateParams["eventi"] = $dbh->getEventFromUser($_GET['user']);
+$templateParams["js"] = array("js/notification.js", "js/manageRequest.js");
 if($templateParams["profilo"][0]['Username'] == $_SESSION['userId']){
     $templateParams["contenuto"] = "view/profile-view.php";
     require("view/base.php");

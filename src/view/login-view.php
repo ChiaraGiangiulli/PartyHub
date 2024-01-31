@@ -18,11 +18,11 @@
     ?>
 </head>
 <body>
-<div id="logoMobile" class="text-center">
-  <img src="img/logo.png" alt="PartyHub" class="img-fluid w-50" title="PartyHub logo" id="logo">
+<div id="logoMobile" class="container-sm w-50 text-center">
+  <img src="img/logo.png" alt="PartyHub" class="img-fluid" title="PartyHub logo" id="logo">
 </div>
 <div class="container-sm p-5 border">
-  <h2>Login</h2>
+  <h3>Login</h3>
   <form action="/PartyHub/src/api/login.php" method="post">
     <div class="mb-3 mt-3">
       <label for="username">Username:</label>
@@ -32,13 +32,11 @@
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="psw" required>
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="btn btn-success">Login</button>
   </form>
 </div>
-<div class="container-sm">
-  <form action="/PartyHub/src/signup.php">
-    <button type="submit" class="btn btn-link">Not a member? Signup.</button>
-  </form>
+<div class="container-sm pt-3 pb-3">
+  <a href="/PartyHub/src/signup.php">Not a member? Signup.</a>
 </div>
 
 </body>

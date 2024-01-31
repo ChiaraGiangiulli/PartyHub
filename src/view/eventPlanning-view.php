@@ -3,9 +3,9 @@
 <div class="container mb-3 mt-3">
     <div class="row">
     <div class="col-10">
-        <form action="/PartyHub/src/api/newPost.php?pers=0&img=null&evnt=<?php echo $idEvent ?>" method="post">
+        <form id="newEventPostForm">
             <input type="text" class="form-control" id="caption" placeholder="Join the conversation." name="caption">
-            <button class="btn btn-success" type="submit">Post</button>
+            <button id="addEventPost" class="btn btn-success" data-eventid="<?php echo $idEvent ?>">Post</button>
         </form>
     </div>
     <div class="col-1 text-end">
