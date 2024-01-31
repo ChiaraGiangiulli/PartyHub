@@ -1,9 +1,7 @@
 <?php
     require_once('../database.php');
     $idEvent = $_GET['id'];
-    $dbh->addSurvey($idEvent);
-    $survey= $dbh->getSurveyidFromEvent($idEvent);
-    $idSondaggio = $survey['0']['idSondaggio'];
+    $idSondaggio = $dbh->addSurvey($idEvent);
     if(isset($_POST['choices'])){
         $opzioni = $_POST['choices'];
     }

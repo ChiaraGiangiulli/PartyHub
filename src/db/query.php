@@ -449,22 +449,8 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idEvento);
         $stmt->execute();
-    }
 
-    public function getSurveyidFromEvent($idEvento){
-        $query = "
-        SELECT idSondaggio
-        FROM sondaggio
-        WHERE idEvento = ?
-        ORDER BY idSondaggio DESC
-        LIMIT 1
-        ";
-
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $idEvento);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $stmt->insert_id;
     }
 
     public function deleteSurvey($idSondaggio){

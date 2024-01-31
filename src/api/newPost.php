@@ -45,7 +45,7 @@ else if(null !==$_GET['evnt']){
     $idEvent=$_GET['evnt'];
     if($dbh->createPost(time(),$_POST['caption'], $image, $_GET['pers'], $user, $idEvent) > 0){ ?>
         <h5> Post creato con successo</h5> 
-        <a href="../index.php" class="btn btn-light">Torna alla home</a>
+        <a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="btn btn-light">Torna sull'evento</a>
     <?php
     }
     else{?>
