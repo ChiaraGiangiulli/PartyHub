@@ -2,6 +2,10 @@ h3{
     color:rgb(138,36,94);
 }
 
+h5{
+    color:rgb(138,36,94);
+}
+
 nav{
     background-color: rgba(255, 215, 182, 0.855);
 }
@@ -14,8 +18,16 @@ div.card{
     background-color: rgba(223, 159, 195, 0.614);
 }
 
+div.modal-content{
+    background-color: rgba(255, 215, 182, 0.925);
+}
+
+div.offcanvas{
+    background-color: rgb(255, 215, 182);
+}
+
 a{
-    color: rgb(36,138,36)
+    color: rgb(0, 0, 0)
 }
 
 body{

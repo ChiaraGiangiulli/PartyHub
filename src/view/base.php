@@ -124,7 +124,7 @@
 ?>
 <div class="offcanvas offcanvas-end" id="notification">
   <div class="offcanvas-header">
-    <h1 class="offcanvas-title">Notifiche</h1>
+    <h3 class="offcanvas-title">Notifiche</h3>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
   <div class="offcanvas-body">
