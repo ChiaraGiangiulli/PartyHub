@@ -21,7 +21,7 @@
 ?>
 </div>
 <div class="col-sm-12 text-center mt-3">
-  <?php print_r($templateParams["profilo"][0]['Username']);?>
+  <h3><?php print_r($templateParams["profilo"][0]['Username']);?></h3>
 </div>
 <div class="col-sm-12 text-center mt-4 mb-4">
   <div id="profileForm" class="btn-group">
@@ -41,7 +41,7 @@
   </div>
 </div>
 
-<nav class="navbar navbar-expand bg-light justify-content-center">
+<nav class="navbar navbar-expand justify-content-center">
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/profilePost.php"){echo "active";}?>" href="/PartyHub/src/profilePost.php?user=<?php print_r($templateParams["profilo"][0]['Username']);?>">Posts</a>

@@ -1,7 +1,7 @@
 <?php 
 foreach ($templateParams["post"] as $post){
 ?>
-<div class="container-sm w-75 border pt-3 pb-3 mb-3 mt-3">
+<div class="container-sm w-75 border pt-3 pb-3 mb-3 mt-3" id="postView">
     <div class="row">
         <div class="col-sm-12">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">

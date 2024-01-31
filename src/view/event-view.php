@@ -8,6 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.15.0/font/bootstrap-icons.css" rel="stylesheet">
+<link href="/PartyHub/src/css/style.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -37,7 +38,7 @@ return new bootstrap.Tooltip(tooltipTriggerEl)
     $id=$templateParams["evento"][0]['idEvento'];
     $percorso = "/PartyHub/src/event.php?id=$id";
 } ?>
-<nav class="navbar navbar-expand bg-light">
+<nav class="navbar navbar-expand">
 <div class="container">
     <div class="col-2">
         <ul class="navbar-nav">
@@ -59,7 +60,7 @@ return new bootstrap.Tooltip(tooltipTriggerEl)
             </li>
         </ul>
     </div>
-    <div class="col-8"><center><h3><?php print_r($templateParams['evento'][0]['Nome'])?></h3></center></div>
+    <div class="col-8 text-center"><h3><?php print_r($templateParams['evento'][0]['Nome'])?></h3></div>
     <div class="col-2"></div>
 </div>
 </nav>
@@ -118,7 +119,7 @@ return new bootstrap.Tooltip(tooltipTriggerEl)
 <?php if(count($dbh->isAccepted($_SESSION['userId'],$templateParams['evento'][0]['idEvento'])) > 0
             || $templateParams['evento'][0]['Organizzatore'] == $_SESSION['userId']){
     ?>
-<nav class="navbar navbar-expand bg-light justify-content-center">
+<nav class="navbar navbar-expand justify-content-center">
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/eventPlanning.php"){echo "active";}?>" href="/PartyHub/src/eventPlanning.php?id=<?php print_r($templateParams['evento'][0]['idEvento'])?>">Planning</a>

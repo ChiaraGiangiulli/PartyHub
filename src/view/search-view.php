@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand bg-light">
+<nav class="navbar navbar-expand">
   <div class="col-12">
       <ul class="navbar-nav justify-content-center">
         <li class="nav-item">
