@@ -7,15 +7,15 @@ h5{
 }
 
 nav{
-    background-color: rgba(255, 215, 182, 0.855);
+    background-color: rgba(255, 215, 182, 0.732);
 }
 
 div#postView{
-    background-color: rgba(223, 159, 195, 0.464);
+    background-color: rgba(223, 159, 195, 0.256);
 }
 
 div.card{
-    background-color: rgba(223, 159, 195, 0.464);
+    background-color: rgba(223, 159, 195, 0.256);
 }
 
 div.modal-content{
