@@ -111,6 +111,6 @@
   }
 ?>
 
-<?php require_once("modals.php");?>
+<?php require_once("modalsProfile.php");?>
 </body>
 </html>
