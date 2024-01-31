@@ -12,15 +12,16 @@ if(isset($_POST['image'])){
 }
 
 if(isset($_POST['event'])){
+    $mysqlTimestamp = date("Y-m-d H:i:s", time());
     if($_GET['pers'] != 0){
         $res=$dbh->getEventFromName($_POST['event']);
         if(count($res) > 0){
             $event= $res[0]['idEvento'];
-            $dbh->createPost(time(),$_POST['caption'], $image, $_GET['pers'], $user, $event);
+            $dbh->createPost($mysqlTimestamp, $_POST['caption'], $image, $_GET['pers'], $user, $event);
         }
     }
     else{
-        $dbh->createPost(time(),$_POST['caption'], $image, $_GET['pers'], $user, $_POST['event']);
+        $dbh->createPost($mysqlTimestamp, $_POST['caption'], $image, $_GET['pers'], $user, $_POST['event']);
     }
     
 }

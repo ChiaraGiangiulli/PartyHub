@@ -214,6 +214,7 @@ class DatabaseHelper{
                 SELECT s.Following 
                 FROM segui s
                 WHERE s.Follower = ? )
+                ORDER BY p.DataOra DESC
         ";
 
         $stmt = $this->db->prepare($query);
@@ -229,6 +230,7 @@ class DatabaseHelper{
             SELECT *
             FROM post p
             WHERE p.Personale = ? AND p.idEvento = ?
+            ORDER BY p.DataOra DESC
         ";
 
         $stmt = $this->db->prepare($query);
