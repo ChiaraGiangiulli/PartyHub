@@ -12,7 +12,7 @@ if($_GET['user'] != $_SESSION['userId']){
 require("view/otherUsers-view.php");
 } else{
     $templateParams["contenuto"] = "view/profile-view.php";
-    $templateParams["js"] = array("js/profile.js","js/like.js", "js/comments.js");
+    $templateParams["js"] = array("js/like.js", "js/comments.js");
 
 require("view/base.php");
 }
