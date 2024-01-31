@@ -160,6 +160,6 @@ else{ ?>
     </div>
 <?php }
 ?>
-<?php require_once("modal1.php");?>
+<?php require_once("modalsEvent.php");?>
 </body>
 </html>
