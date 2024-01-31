@@ -2,22 +2,42 @@ h3{
     color:rgb(138,36,94);
 }
 
+h5{
+    color:rgb(138,36,94);
+}
+
 nav{
-    background-color: rgba(255, 215, 182, 0.855);
+    background-color: rgba(255, 215, 182, 0.732);
 }
 
 div#postView{
-    background-color: rgba(223, 159, 195, 0.614);
+    background-color: rgba(223, 159, 195, 0.256);
 }
 
 div.card{
-    background-color: rgba(223, 159, 195, 0.614);
+    background-color: rgba(223, 159, 195, 0.256);
+}
+
+div.modal-content{
+    background-color: rgba(255, 215, 182, 0.925);
+}
+
+div.offcanvas{
+    background-color: rgb(255, 215, 182);
 }
 
 a{
-    color: rgb(36,138,36)
+    color: rgb(0, 0, 0)
 }
 
 body{
-    background-color: rgba(255, 215, 182, 0.41);
+    background-color: rgba(255, 215, 182, 0.238);
+}
+
+li.list-group-item{
+    background-color: rgba(255, 215, 182, 0.09);
+}
+
+table.table{
+    background-color: rgb(255, 215, 182);
 }
