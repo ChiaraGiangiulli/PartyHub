@@ -540,6 +540,20 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function getProdottifromLista($idLista){
+        $query = "
+            SELECT *
+            FROM prodotto
+            WHERE idLista = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idLista);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function deleteList($idLista){
         $query = "
             DELETE FROM lista
