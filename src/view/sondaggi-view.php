@@ -18,25 +18,28 @@ foreach ($templateParams["sondaggi"] as $sondaggio){
             </form>
         </div>
     </div>
+    <?php foreach ($opzioni as $opzione){ $numeroVoti=$numeroVoti+$opzione['NumeroVoti']; }?>
     <div class="col-12">
         <div class="container-sm border pt-3 pb-3">
         <table class="table table-hover">
-        <?php foreach ($opzioni as $opzione){ $numeroVoti=$numeroVoti+$opzione['NumeroVoti']; }?>
             <?php foreach ($opzioni as $opzione){?>
             <thead>
                 <tr>
-                    <th><?php print_r($opzione['Nome'])?></th>
+                    <th class="prod" style="width: 50%;"><?php print_r($opzione['Nome'])?></th>
                     <?php if($numeroVoti > 0){ ?>
-                        <th><div class="progress"> <div class="progress-bar bg-success" role="progressbar" style="width:<?php print_r(($opzione['NumeroVoti']*100)/$numeroVoti)?>%" aria-valuenow="<?php print_r(($opzione['NumeroVoti']*100)/$numeroVoti)?>" aria-valuemin="0" aria-valuemax="100"></div>
+
+                    <th class="price"><div class="progress"> <div class="progress-bar bg-success" role="progressbar" style="width:<?php print_r(($opzione['NumeroVoti']*100)/$numeroVoti)?>%" aria-valuenow="<?php print_r(($opzione['NumeroVoti']*100)/$numeroVoti)?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    
                     <?php }
                         else{ ?>
-                            <th><div class="progress"> <div class="progress-bar bg-success" role="progressbar" style="width:0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        <?php } ?>
-                    
-                    </div></div></th>
+
+                    <th class="price"><div class="progress"> <div class="progress-bar bg-success" role="progressbar" style="width:0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div></div></td>
+                    <?php } ?>
                 </tr>
             </thead>
             <?php } ?>
+
         </table>
         </div>
     </div>

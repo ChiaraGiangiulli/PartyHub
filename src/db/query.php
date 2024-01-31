@@ -527,17 +527,20 @@ class DatabaseHelper{
         $stmt->bind_param('is', $idSondaggio, $nome);
         $stmt->execute();
     }
+
     
     public function addList($idEvento){
         $query = "
-            INSERT INTO lista (idLista, ImportoTotale, idEvento)
-            VALUES ((SELECT MAX(idLista) FROM lista)+1, ?, ?)
+            INSERT INTO lista (ImportoTotale, idEvento)
+            VALUES (?, ?)
         ";
 
         $importo=0;
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii', $importo, $idEvento);
         $stmt->execute();
+
+        return $stmt->insert_id;
     }
 
     public function getProdottifromLista($idLista){
@@ -596,7 +599,7 @@ class DatabaseHelper{
         ";
 
         $stmt1 = $this->db->prepare($query1);
-        $stmt1->bind_param('di', $Prezzo, $IdLista);
+        $stmt1->bind_param('di', $prezzo, $idLista);
         $stmt1->execute();
 
         return $stmt->insert_id;

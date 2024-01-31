@@ -11,7 +11,7 @@
             <div class="form-group" id="choicesContainer">
                 <label for="option1">Options:</label>
                 <div class="input-group mb-3">
-                <input type="text" class="form-control" name="choices[]" placeholder="Option">
+                <input type="text" class="form-control" name="choices[]" placeholder="Option" required>
                 <div class="input-group-append">
                     <button class="btn btn-outline-success" type="button" onclick="addChoice()">Add Choice</button>
                 </div>
@@ -39,8 +39,9 @@
             <div class="form-group" id="productContainer">
                 <label for="option1">Products:</label>
                 <div class="input-group mb-3">
-                <input type="text" class="form-control" name="products[]" placeholder="Option">
-                <input type="text" class="form-control" name="price[]" placeholder="€">
+                <input type="text" class="form-control" name="products[]" placeholder="Option" required>
+                <input type="number" class="form-control text-end" name="price[]" required>
+                <span class="input-group-text">€</span>
                 <div class="input-group-append">
                     <button class="btn btn-outline-success" type="button" onclick="addProduct()">Add Product</button>
                 </div>
@@ -62,7 +63,7 @@
 function addChoice() {
     let choicesContainer = $('#choicesContainer');
     let newChoiceInput = $('<div class="input-group mb-3">' +
-                            '<input type="text" class="form-control" name="choices[]" placeholder="New Option">' +
+                            '<input type="text" class="form-control" name="choices[]" placeholder="New Option" required>' +
                             '<div class="input-group-append">' +
                                 '<button class="btn btn-outline-success" type="button" onclick="removeChoice(this)">Remove</button>' +
                             '</div>' +
@@ -77,8 +78,8 @@ function addChoice() {
     function addProduct() {
         let choicesContainer = $('#productContainer');
         let newChoiceInput = $('<div class="input-group mb-3">' +
-                                '<input type="text" class="form-control" name="products[]" placeholder="New Product">' +
-                                '<input type="text" class="form-control" name="price[]" placeholder="€">' +
+                                '<input type="text" class="form-control" name="products[]" placeholder="New Product" required>' +
+                                '<input type="text" class="form-control text-end" name="price[]" required><span class="input-group-text">€</span>' +
                                 '<div class="input-group-append">' +
                                     '<button class="btn btn-outline-success" type="button" onclick="removeProduct(this)">Remove</button>' +
                                 '</div>' +
