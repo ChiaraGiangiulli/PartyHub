@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Add Post</title>
+    <title>Create Event</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="../js/createEvent.js"></script>
     <link href="/PartyHub/src/css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -32,26 +34,46 @@
             </li>
         </ul>
     </div>
-    <div class="col-8"><center><p class="p-1"><h2>New Post</h2></p></center></div>
+    <div class="col-8 text-center"><p class="p-1"><h2>New Event</h2></p></div>
     <div class="col-2"></div>
 </div>
 </nav>
     <div class="container-sm p-5 border">
-        <form id="signup" action="/PartyHub/src/api/newPost.php?pers=1" method="post">
+        <form id="newEventForm">
 
             <div class="mb-3 mt-3">
-                <label for="caption">Caption:</label>
-                <input type="text" class="form-control" id="caption" placeholder="Caption" name="caption">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
             </div>
             <div class="mb-3 mt-3">
-                <label for="image">Image:</label>
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" placeholder="Address" name="address" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="number">N°:</label>
+                <input type="number" class="form-control" id="number" placeholder="Number" name="number" required>
+            </div>
+            <div class="mb-3">
+                <label for="city">City:</label>
+                <input type="text" class="form-control" id="city" name="city" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="country">Country:</label>
+                <input type="text" class="form-control" id="country" placeholder="Country" name="country" required>
+            </div>
+            <div class="mb-3">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="time">Time:</label>
+                <input type="time" class="form-control" id="time" name="time" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="image">Cover image:</label>
                 <input type="file" class="form-control" id="image" name="image" multiple />
             </div>
-            <div class="mb-3 mt-3">
-                <label for="event">Event:</label>
-                <input type="text" class="form-control" id="event" placeholder="Name of the event" name="event">
-            </div>
-            <button type="submit" class="btn btn-success">Add</button>
+            <button id="createEvent" class="btn btn-success">Create</button>
         </form>
     </div>
 </body>
