@@ -9,7 +9,6 @@ if(isset($_POST['image'])){
 }
 if(count($dbh->getEventFromName($_POST['name'])) == 0)
     if(isset($_POST['name'], $_POST['address'], $_POST['number'], $_POST['city'], $_POST['country'], $_POST['date'], $_POST['time'])){
-    if($dbh->createEvent($_POST['name'],$_POST['address'], $_POST['number'], $_POST['city'], $_POST['country'], $_POST['date'], $_POST['time'], 0, $user, $image) > 0){
-    }
+        $dbh->createEvent($_POST['name'],$_POST['address'], $_POST['number'], $_POST['city'], $_POST['country'], $_POST['date'], $_POST['time'], 0, $user, $image);
 }
 ?>

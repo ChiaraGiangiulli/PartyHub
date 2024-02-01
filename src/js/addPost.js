@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
             formData.append('caption', form.elements["caption"].value);
             formData.append('event', idEvent);
             axios.post('./api/newPost.php?pers=0', formData).then(response => {
-               window.open('/PartyHub/src/event.php?id='+ encodeURIComponent(idEvent), '_self');
+               window.open('/PartyHub/src/eventPlanning.php?id='+ encodeURIComponent(idEvent), '_self');
             });
         });
     }
