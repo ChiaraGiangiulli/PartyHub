@@ -7,6 +7,7 @@
   </svg>
   <a href="otherUsers.php?user=<?php print_r($templateParams["evento"][0]['Organizzatore'])?>">
   <?php print_r($templateParams["evento"][0]['Organizzatore']);?>
+  </a></br>
   <?php
   foreach ($partecipants as $risultato) { ?>
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">

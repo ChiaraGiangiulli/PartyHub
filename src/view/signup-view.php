@@ -30,15 +30,15 @@
         <form id="signup" action="/PartyHub/src/api/signup.php" method="post">
 
             <div class="mb-3 mt-3">
-                <label for="Name">Name:</label>
+                <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
             </div>
             <div class="mb-3 mt-3">
-                <label for="Name">Surname:</label>
+                <label for="surname">Surname:</label>
                 <input type="text" class="form-control" id="surname" placeholder="Surname" name="surname" required>
             </div>
             <div class="mb-3 mt-3">
-                <label for="Username">Username:</label>
+                <label for="username">Username:</label>
                 <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
             </div>
             <div class="mb-3">
