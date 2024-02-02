@@ -1,3 +1,26 @@
+INSERT INTO `utente` (`Nome`, `Cognome`, `Username`, `Password`, `Email`, `DataDiNascita`, `ImmagineProfilo`) VALUES
+('Chiara', 'Giangiulli', 'chiag', '$2y$10$2IZCzgYyLr7ytmQEQWvmsewTqYhlBFuv.En7WqavJs0c85hX1.Yne', 'chiara.giangiulli@email.com', '2002-03-25', 'profile6.jpg'),
+('Seba', 'Seijas', 'seba_seijas', '$2y$10$6Sx1NTP7GRrVVbOvImr0Q.Ng4sL3bXq8DMc5fxiNbCnocZDHjsfwC', 'seba.seijas@email.com', '2001-07-23', 'profile5.jpg'),
+('John', 'Doe', 'User1', '$2y$10$vnW4sLCYg0x/jV/kJ0f9oOtpFAHSW4I7SIXTvEi.Sh08gots7xXJi', 'user1@email.com', '1988-02-18', 'profile3.jpg'),
+('Jane', 'Doe', 'User2', '$2y$10$gJ8Rduj4gG4bF.YZl.dVduENLcnTuA9CRmFXJTK/lbYU0M7Yxtnbe', 'user2@email.com', '2024-02-02', 'profile1.jpg');
+
+
+INSERT INTO `post` (`idPost`, `DataOra`, `Testo`, `Immagine`, `Personale`, `NumeroLike`, `NumeroCommenti`, `Proprietario`, `idEvento`) VALUES
+(1, '2024-01-29 07:54:46', 'Hello World!', NULL, 1, 0, 0, 'User1', 1),
+(2, '2024-01-29 07:54:54', 'Another post', NULL, 0, 0, 0, 'User2', 2),
+(3, '2024-01-31 16:17:41', 'Textttt', 'party10.jpg', 1, 0, 0, 'User2', 4),
+(4, '2024-01-31 15:32:44', 'Wow', 'party7.jpg', 1, 0, 0, 'User2', 3),
+(5, '2024-02-02 11:40:20', 'Bel post', 'party15.jpg', 1, 2, 0, 'chiag', 5),
+(7, '2024-01-31 14:09:10', 'Post', 'party12.jpg', 1, 1, 0, 'seba_seijas', 2),
+(8, '2024-01-31 09:44:55', 'Happy', 'party13.jpg', 1, 0, 0, 'User2', 2),
+(9, '0000-00-00 00:00:00', 'Cosa compro?', NULL, 0, 0, 0, 'seba_seijas', 11),
+(10, '0000-00-00 00:00:00', 'Allergie?', NULL, 0, 0, 0, 'chiag', 5),
+(11, '0000-00-00 00:00:00', 'Compriamo le patatine?', NULL, 0, 0, 0, 'chiag', 5),
+(18, '2024-02-02 11:37:52', 'Bellissimo', 'party6.jpg', 1, 1, 1, 'seba_seijas', 3),
+(19, '0000-00-00 00:00:00', 'Buon anno', 'party11.jpg', 1, 1, 1, 'User2', 3),
+(20, '0000-00-00 00:00:00', 'Che musica ascoltate?', NULL, 0, 0, 0, 'User2', 5),
+(21, '2024-02-02 12:03:09', 'Compriamo l\'uva?', NULL, 0, 0, 0, 'User2', 3),
+(22, '2024-02-02 12:06:55', 'Avete posti letto?', NULL, 0, 0, 0, 'chiag', 4);
 
 INSERT INTO `commento` (`idCommento`, `DataOra`, `Testo`, `idPost`, `UserCommento`) VALUES
 (1, '0000-00-00 00:00:00', 'Buon anno!', 18, 'User2'),
@@ -61,6 +84,11 @@ INSERT INTO `notifica` (`idNotifica`, `Tipo`, `Testo`, `UserInvio`, `UserRiceven
 (31, 'Follow', 'ha iniziato a seguirti', 'chiag', 'seba_seijas', NULL, 0);
 
 
+INSERT INTO `sondaggio` (`idSondaggio`, `idEvento`) VALUES
+(2, 4),
+(1, 5);
+
+
 INSERT INTO `opzione` (`idSondaggio`, `Nome`, `NumeroVoti`) VALUES
 (1, 'aranciata', 0),
 (1, 'birra', 0),
@@ -70,23 +98,6 @@ INSERT INTO `opzione` (`idSondaggio`, `Nome`, `NumeroVoti`) VALUES
 (2, 'pop', 0),
 (2, 'rock', 0);
 
-
-INSERT INTO `post` (`idPost`, `DataOra`, `Testo`, `Immagine`, `Personale`, `NumeroLike`, `NumeroCommenti`, `Proprietario`, `idEvento`) VALUES
-(1, '2024-01-29 07:54:46', 'Hello World!', NULL, 1, 0, 0, 'User1', 1),
-(2, '2024-01-29 07:54:54', 'Another post', NULL, 0, 0, 0, 'User2', 2),
-(3, '2024-01-31 16:17:41', 'Textttt', 'party10.jpg', 1, 0, 0, 'User2', 4),
-(4, '2024-01-31 15:32:44', 'Wow', 'party7.jpg', 1, 0, 0, 'User2', 3),
-(5, '2024-02-02 11:40:20', 'Bel post', 'party15.jpg', 1, 2, 0, 'chiag', 5),
-(7, '2024-01-31 14:09:10', 'Post', 'party12.jpg', 1, 1, 0, 'seba_seijas', 2),
-(8, '2024-01-31 09:44:55', 'Happy', 'party13.jpg', 1, 0, 0, 'User2', 2),
-(9, '0000-00-00 00:00:00', 'Cosa compro?', NULL, 0, 0, 0, 'seba_seijas', 11),
-(10, '0000-00-00 00:00:00', 'Allergie?', NULL, 0, 0, 0, 'chiag', 5),
-(11, '0000-00-00 00:00:00', 'Compriamo le patatine?', NULL, 0, 0, 0, 'chiag', 5),
-(18, '2024-02-02 11:37:52', 'Bellissimo', 'party6.jpg', 1, 1, 1, 'seba_seijas', 3),
-(19, '0000-00-00 00:00:00', 'Buon anno', 'party11.jpg', 1, 1, 1, 'User2', 3),
-(20, '0000-00-00 00:00:00', 'Che musica ascoltate?', NULL, 0, 0, 0, 'User2', 5),
-(21, '2024-02-02 12:03:09', 'Compriamo l\'uva?', NULL, 0, 0, 0, 'User2', 3),
-(22, '2024-02-02 12:06:55', 'Avete posti letto?', NULL, 0, 0, 0, 'chiag', 4);
 
 
 INSERT INTO `prodotto` (`idProdotto`, `Nome`, `Prezzo`, `idLista`) VALUES
@@ -117,15 +128,4 @@ INSERT INTO `segui` (`Follower`, `Following`) VALUES
 ('User2', 'chiag'),
 ('User2', 'seba_seijas');
 
-
-INSERT INTO `sondaggio` (`idSondaggio`, `idEvento`) VALUES
-(2, 4),
-(1, 5);
-
-
-INSERT INTO `utente` (`Nome`, `Cognome`, `Username`, `Password`, `Email`, `DataDiNascita`, `ImmagineProfilo`) VALUES
-('Chiara', 'Giangiulli', 'chiag', '$2y$10$2IZCzgYyLr7ytmQEQWvmsewTqYhlBFuv.En7WqavJs0c85hX1.Yne', 'chiara.giangiulli@email.com', '2002-03-25', 'profile6.jpg'),
-('Seba', 'Seijas', 'seba_seijas', '$2y$10$6Sx1NTP7GRrVVbOvImr0Q.Ng4sL3bXq8DMc5fxiNbCnocZDHjsfwC', 'seba.seijas@email.com', '2001-07-23', 'profile5.jpg'),
-('John', 'Doe', 'User1', '$2y$10$vnW4sLCYg0x/jV/kJ0f9oOtpFAHSW4I7SIXTvEi.Sh08gots7xXJi', 'user1@email.com', '1988-02-18', 'profile3.jpg'),
-('Jane', 'Doe', 'User2', '$2y$10$gJ8Rduj4gG4bF.YZl.dVduENLcnTuA9CRmFXJTK/lbYU0M7Yxtnbe', 'user2@email.com', '2024-02-02', 'profile1.jpg');
 

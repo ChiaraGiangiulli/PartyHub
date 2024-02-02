@@ -1,26 +1,5 @@
--- *********************************************
--- * Standard SQL generation                   
--- *--------------------------------------------
--- * DB-MAIN version: 11.0.2              
--- * Generator timestamp: Sep 14 2021              
--- * Generation timestamp: Mon Jan 15 15:37:02 2024 
--- * LUN file: C:\Users\chiar\Desktop\Chiara\uni\terzo_anno\tecnologie_web\progetto\PartyHub\doc\PartyHub.lun 
--- * Schema: SCHEMA/SQL 
--- ********************************************* 
-
-
--- Database Section
--- ________________ 
-
 create database PartyHub;
 
-
--- DBSpace Section
--- _______________
-
-
--- Tables Section
--- _____________ 
 use PartyHub;
 
 create table Commento (
