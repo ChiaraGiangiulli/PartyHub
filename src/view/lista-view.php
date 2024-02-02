@@ -24,7 +24,7 @@ foreach ($templateParams["spese"] as $spesa){
                     <th class="tot text-end"><?php print_r($spesa['ImportoTotale'])?>€</th>
                     <th class="quota">Quota:</th>
                     <?php if($evento[0]['NumeroPartecipanti']==0) {?>
-                    <th class="quota text-end"><?php print_r($spesa['Importo totale'])?>€</th>
+                    <th class="quota text-end"><?php print_r($spesa['ImportoTotale'])?>€</th>
                     <?php  }
                     else{ ?>
                     <th class="quota text-end"><?php echo number_format($spesa['ImportoTotale']/$evento[0]['NumeroPartecipanti'],2)?>€</th>

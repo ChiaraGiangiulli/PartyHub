@@ -40,7 +40,7 @@
                 <label for="option1">Products:</label>
                 <div class="input-group mb-3">
                 <input type="text" class="form-control" name="products[]" placeholder="Option" required>
-                <input type="number" class="form-control text-end" name="price[]" required>
+                <input type="text" class="form-control text-end" name="price[]" id="price[]" required>
                 <span class="input-group-text">€</span>
                 <div class="input-group-append">
                     <button class="btn btn-outline-success" type="button" onclick="addProduct()">Add Product</button>
@@ -79,15 +79,31 @@ function addChoice() {
         let choicesContainer = $('#productContainer');
         let newChoiceInput = $('<div class="input-group mb-3">' +
                                 '<input type="text" class="form-control" name="products[]" placeholder="New Product" required>' +
-                                '<input type="text" class="form-control text-end" name="price[]" required><span class="input-group-text">€</span>' +
+                                '<input type="text" class="form-control text-end price" name="price[]" required><span class="input-group-text">€</span>' +
                                 '<div class="input-group-append">' +
                                     '<button class="btn btn-outline-success" type="button" onclick="removeProduct(this)">Remove</button>' +
                                 '</div>' +
                                 '</div>');
         choicesContainer.append(newChoiceInput);
+        $('.price').last().on('input', function() {
+        var inputValue = this.value;
+        var isValidDecimal = /^-?\d*\.?\d{0,2}$/.test(inputValue);
+
+        if (!isValidDecimal) {
+            this.value = inputValue.slice(0, -1); // Remove the last character (not a valid decimal)
+        }
+    });
         }
     
         function removeProduct(button) {
         $(button).closest('.input-group').remove();
         }
-        </script>
+        document.getElementById('price[]').addEventListener('input', function() {
+            var inputValue = this.value;
+            var isValidDecimal = /^-?\d*\.?\d{0,2}$/.test(inputValue);
+
+            if (!isValidDecimal) {
+                this.value = inputValue.slice(0, -1); // Remove the last character (not a valid decimal)
+            }
+        });
+</script>
