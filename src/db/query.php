@@ -47,7 +47,7 @@ class DatabaseHelper{
 
         $testo = "ha creato un nuovo evento: ".$nome;
         foreach($this->getFollowers($organizzatore) as $follower){
-            $this->newNotification("Nuovo Evento", $testo, $organizzatore, $follower['Follower'], null, 0);
+            $this->newNotification("Nuovo Evento", $testo, $organizzatore, $follower['Follower'], null, 1);
         }
         return $stmt->insert_id;
     }
