@@ -1,7 +1,7 @@
 <?php 
 foreach ($templateParams["post"] as $post){
 ?>
-<div class="container-sm w-75 border pt-3 pb-3 mb-3 mt-3" id="postView">
+<div class="container-lg w-75 border pt-3 pb-3 mb-3 mt-3" id="postView">
     <div class="row">
         <div class="col-sm-12">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -22,7 +22,7 @@ foreach ($templateParams["post"] as $post){
     <?php if($dbh->getPostFromId($post['idPost'])[0]['Immagine'] != null){
         $image = $dbh->getPostFromId($post['idPost'])[0]['Immagine']; 
     ?>
-    <img class="img-fluid" src="/PartyHub/src/img/<?php print_r($image)?>" alt="post image">
+    <img class="img-fluid rounded mx-auto d-block" src="/PartyHub/src/img/<?php print_r($image)?>" alt="post image">
     <?php 
         } 
     ?>

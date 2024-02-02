@@ -114,7 +114,7 @@ create table Utente (
      Username varchar(255) not null,
      Password varchar(255) not null,
      Email varchar(255) not null,
-     DataDiNascita timestamp not null,
+     DataDiNascita date not null,
      ImmagineProfilo varchar(255),
      constraint ID_Utente_ID primary key (Username));
 

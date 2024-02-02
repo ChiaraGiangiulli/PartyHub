@@ -15,7 +15,7 @@ foreach ($templateParams["post"] as $post){
     <?php if($dbh->getPostFromId($post['idPost'])[0]['Immagine'] != null){
         $image = $dbh->getPostFromId($post['idPost'])[0]['Immagine']; 
     ?>
-    <img class="img-fluid" src="/PartyHub/src/img/<?php print_r($image)?>" alt="post image">
+    <img class="img-fluid rounded mx-auto d-block" src="/PartyHub/src/img/<?php print_r($image)?>" alt="post image">
     <?php 
         } 
     ?>
