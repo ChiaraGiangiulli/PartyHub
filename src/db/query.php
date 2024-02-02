@@ -107,6 +107,21 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPartecipantsFromEvent($event){
+        $query = "
+            SELECT UserPartecipante
+            FROM richiesta
+            WHERE idEvento = ? AND Accettata = ?
+        ";
+
+        $accettata = 1;
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $event, $accettata);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getEventFromId($id){
         $query = "
         SELECT *
