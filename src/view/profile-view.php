@@ -40,14 +40,15 @@
         </svg> New Event</a>
   </div>
 </div>
-
 <nav class="navbar navbar-expand justify-content-center">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/profilePost.php"){echo "active";}?>" href="/PartyHub/src/profilePost.php?user=<?php print_r($templateParams["profilo"][0]['Username']);?>">Posts</a>
+        <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "profilePost.php"){echo "active";}?>" 
+          href="/PartyHub/src/profilePost.php?user=<?php print_r($templateParams["profilo"][0]['Username']);?>">Posts</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/profileEvent.php"){echo "active";}?>" href="/PartyHub/src/profileEvent.php?user=<?php print_r($templateParams["profilo"][0]['Username']);?>">Events</a>
+        <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "profileEvent.php"){echo "active";}?>" 
+          href="/PartyHub/src/profileEvent.php?user=<?php print_r($templateParams["profilo"][0]['Username']);?>">Events</a>
       </li>
     </ul>
 </nav>

@@ -506,6 +506,20 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function alreadyInSurvey($idSondaggio, $nome){
+        $query = "
+            SELECT *
+            FROM opzione
+            WHERE idSondaggio = ? and Nome = ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('is', $idSondaggio, $nome);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function addVote($idSondaggio, $nome){
         $query = "
             UPDATE opzione o

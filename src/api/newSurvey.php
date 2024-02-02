@@ -6,7 +6,9 @@
         $opzioni = $_POST['choices'];
     }
     foreach($opzioni as $opzione){
-        $dbh->addOptionInSurvey($idSondaggio,$opzione);
+        if(count($dbh->alreadyInSurvey($idSondaggio, $opzione)) == 0){
+            $dbh->addOptionInSurvey($idSondaggio,$opzione);
+        }
     }
     echo "<script>window.open('../eventPlanning.php?id=$idEvent','_self')</script>";
 ?>

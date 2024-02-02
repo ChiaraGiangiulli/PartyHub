@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
             if (form.elements["image"].files.length > 0) {
                 formData.append('image', form.elements["image"].files[0].name);
             }
-            axios.post('../api/newEvent.php?', formData).then(response => {
-               window.open('/PartyHub/src/index.php', '_self');
+            axios.post('../api/newEvent.php', formData).then(response => {
+                window.open('/PartyHub/src/profile.php', '_self');
             });
         });
 });

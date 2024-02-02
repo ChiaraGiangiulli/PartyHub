@@ -129,7 +129,7 @@ return new bootstrap.Tooltip(tooltipTriggerEl)
 <nav class="navbar navbar-expand justify-content-center">
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/eventPlanning.php"){echo "active";}?>" href="/PartyHub/src/eventPlanning.php?id=<?php print_r($templateParams['evento'][0]['idEvento'])?>">Planning</a>
+            <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "eventPlanning.php"){echo "active";}?>" href="/PartyHub/src/eventPlanning.php?id=<?php print_r($templateParams['evento'][0]['idEvento'])?>">Planning</a>
         </li>
         <li class="nav-item">
             <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == "/PartyHub/src/eventBudget.php"){echo "active";}?>" href="/PartyHub/src/eventBudget.php?id=<?php print_r($templateParams['evento'][0]['idEvento'])?>">Budget</a>
