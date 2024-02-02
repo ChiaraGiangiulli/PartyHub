@@ -5,6 +5,6 @@ $templateParams["contenutoEvent"] = "view/eventPlanning-view.php";
 $templateParams["sondaggi"] = $dbh->getSurveyFromEvent($_GET['id']);
 $templateParams["evento"] = $dbh->getEventFromId($_GET['id']);
 $templateParams["post"] = $dbh->getPostForEvent($_GET['id']);
-$templateParams["js"] = array("js/like.js","js/comments.js", "js/addPost.js");
+$templateParams["js"] = array("js/like.js","js/comments.js", "js/addPost.js", "js/eventInput.js");
 require("view/event-view.php");
 ?>

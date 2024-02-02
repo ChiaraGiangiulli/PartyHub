@@ -47,7 +47,7 @@ class DatabaseHelper{
 
         $testo = "ha creato un nuovo evento: ".$nome;
         foreach($this->getFollowers($organizzatore) as $follower){
-            $this->newNotification("Nuovo Evento", $testo, $organizzatore, $follower['Follower'], null, 0);
+            $this->newNotification("Nuovo Evento", $testo, $organizzatore, $follower['Follower'], null, 1);
         }
         return $stmt->insert_id;
     }
@@ -102,6 +102,21 @@ class DatabaseHelper{
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getPartecipantsFromEvent($event){
+        $query = "
+            SELECT UserPartecipante
+            FROM richiesta
+            WHERE idEvento = ? AND Accettata = ?
+        ";
+
+        $accettata = 1;
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $event, $accettata);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
