@@ -11,7 +11,7 @@
                 <form id="surveyForm" action="../src/api/newSurvey.php?id=<?php echo $idEvent ?>" method="post">
                     <div class="form-group" id="choicesContainer">
                         <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="choices[]" placeholder="Option" required>
+                        <input type="text" class="form-control" id="choices" name="choices[]" placeholder="Option" title="new option" required>
                         <div class="input-group-append">
                             <button class="btn btn-outline-success" type="button" id="addChoice">Add Choice</button>
                         </div>
@@ -38,8 +38,8 @@
                 <form id="listForm" action="../src/api/newList.php?id=<?php echo $idEvent ?>" method="post">
                     <div class="form-group" id="productContainer">
                         <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="products[]" placeholder="Option" required>
-                        <input type="text" class="form-control text-end" name="price[]" id="price[]" required>
+                        <input type="text" class="form-control" name="products[]" placeholder="Option" title="new product" required>
+                        <input type="text" class="form-control text-end" name="price[]" id="price[]" title="price" required>
                         <span class="input-group-text">€</span>
                         <div class="input-group-append">
                             <button class="btn btn-outline-success" type="button" id="addProduct">Add Product</button>

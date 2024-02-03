@@ -8,7 +8,7 @@ foreach ($templateParams["sondaggi"] as $sondaggio){
             <form action="../src/api/voteSurvey.php?evnt=<?php echo $idEvent?>&snd=<?php echo $sondaggio['idSondaggio']?>" method="post">
                 <?php foreach ($opzioni as $opzione){?>
                     <input class="form-check-input" type="checkbox" id="<?php print_r($opzione['Nome'])?>" name="<?php print_r($opzione['Nome'])?>" value="<?php print_r($opzione['Nome'])?>">
-                    <label class="form-check-label"><?php print_r($opzione['Nome']) ?></label>
+                    <label for="<?php print_r($opzione['Nome'])?>" class="form-check-label"><?php print_r($opzione['Nome']) ?></label>
                     <br/>
                 <?php
                     } ?>

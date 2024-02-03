@@ -4,7 +4,7 @@
     <div class="row">
     <div class="col-10">
         <form id="newEventPostForm">
-            <input type="text" class="form-control" id="caption" placeholder="Join the conversation." name="caption">
+            <input type="text" class="form-control" id="post" placeholder="Join the conversation." name="post" title="post caption">
             <button id="addEventPost" class="btn btn-success" data-eventid="<?php echo $idEvent ?>">Post</button>
         </form>
     </div>

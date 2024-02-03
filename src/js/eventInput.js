@@ -1,7 +1,7 @@
 function addChoice() {
     let choicesContainer = $('#choicesContainer');
     let newChoiceInput = $('<div class="input-group mb-3">' +
-                            '<input type="text" class="form-control" name="choices[]" placeholder="New Option" required>' +
+                            '<input type="text" class="form-control" name="choices[]" placeholder="New Option" title="new option" required>' +
                             '<div class="input-group-append">' +
                                 '<button class="btn btn-outline-success" type="button" onclick="removeChoice(this)">Remove</button>' +
                             '</div>' +
@@ -18,8 +18,8 @@ function removeChoice(button) {
 function addProduct() {
         let choicesContainer = $('#productContainer');
         let newChoiceInput = $('<div class="input-group mb-3">' +
-                                '<input type="text" class="form-control" name="products[]" placeholder="New Product" required>' +
-                                '<input type="text" class="form-control text-end price" name="price[]" required><span class="input-group-text">€</span>' +
+                                '<input type="text" class="form-control" name="products[]" placeholder="New Product" title="new product" required>' +
+                                '<input type="text" class="form-control text-end price" name="price[]" title="price" required><span class="input-group-text">€</span>' +
                                 '<div class="input-group-append">' +
                                     '<button class="btn btn-outline-success" type="button" onclick="removeProduct(this)">Remove</button>' +
                                 '</div>' +
