@@ -3,6 +3,14 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
             let form = document.getElementById("newEventForm");
             let formData = new FormData();
+            let inputDate = form.elements["date"].value;
+            let inputTime = form.elements["time"].value;
+            let inputDateTime = new Date(inputDate + ' ' + inputTime);
+            let now = new Date();
+            if (inputDateTime <= now) {
+                alert("La data dell'evento deve essere successiva alla data corrente.");
+                return;
+            }
             formData.append('name', form.elements["name"].value);
             formData.append('address', form.elements["address"].value);
             formData.append('number', form.elements["number"].value);
@@ -14,7 +22,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 formData.append('image', form.elements["image"].files[0].name);
             }
             axios.post('../api/newEvent.php', formData).then(response => {
-                window.open('/PartyHub/src/profile.php', '_self');
+                console.log(response.data);
+                if (response.data.success){
+                    alert(response.data.message);
+                    window.open('/PartyHub/src/profile.php', '_self');
+                }
+                else{
+                    alert(response.data.message);
+                }
+                
             });
         });
 });

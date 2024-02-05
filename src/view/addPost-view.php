@@ -50,7 +50,7 @@
             </div>
             <div class="mb-3 mt-3">
                 <label for="event">Event:</label>
-                <input type="text" class="form-control" id="event" placeholder="Name of the event" name="event">
+                <input type="text" class="form-control" id="event" placeholder="Name of the event" name="event" required>
             </div>
             <button id="addPost" class="btn btn-success">Add</button>
         </form>

@@ -10,7 +10,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 formData.append('image', form.elements["image"].files[0].name);
             }
             axios.post('../api/newPost.php?pers=1', formData).then(response => {
-               window.open('/PartyHub/src/index.php', '_self');
+                if (response.data.success) {
+                    alert(response.data.message);
+                    window.open('/PartyHub/src/index.php', '_self');
+                }else{
+                    alert(response.data.message);
+                }
             });
         });
     } 

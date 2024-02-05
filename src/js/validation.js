@@ -83,14 +83,28 @@ validator
             errorMessage: 'Passwords should be the same',
         },
         ])
+    
+        .addField('#dob', [
+            {
+                rule: 'required',
+            },
+            {
+                validator: (value) => {
+                    const selectedDate = new Date(value);
+                    const today = new Date();
+                    return selectedDate < today;
+                },
+                errorMessage: 'The date of birth cannot be later than today',
+            },
+        ])
 
-    .addField('#email', [
-        {
-            rule: 'required',
-        },
-        {
-            rule: 'email'
-        }
-    ]);
+        .addField('#email', [
+            {
+                rule: 'required',
+            },
+            {
+                rule: 'email'
+            }
+        ]);
 
 

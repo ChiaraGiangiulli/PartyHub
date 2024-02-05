@@ -44,7 +44,6 @@
             <div class="mb-3">
                 <label for="dob">Date of Birth:</label>
                 <input type="date" class="form-control" id="dob" name="dob" required>
-
             </div>
             <div class="mb-3 mt-3">
                 <label for="email">Email:</label>

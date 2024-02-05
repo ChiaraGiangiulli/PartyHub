@@ -1,4 +1,3 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <?php 
 require_once('../database.php');
 
@@ -18,11 +17,18 @@ if(isset($_POST['event'])){
         if(count($res) > 0){
             $event= $res[0]['idEvento'];
             $dbh->createPost($mysqlTimestamp, $_POST['caption'], $image, $_GET['pers'], $user, $event);
+            echo json_encode(['success' => true, 'message' => 'Post creato con successo']);
+        }else{
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => 'Nessun evento corrispondente.']);
         }
     }
     else{
         $dbh->createPost($mysqlTimestamp, $_POST['caption'], $image, $_GET['pers'], $user, $_POST['event']);
-    }
-    
+    } 
+}
+else{
+    header('Content-Type: application/json');
+    echo json_encode(['success' => false, 'message' => "Inserire l'evento"]);
 }
 ?>
