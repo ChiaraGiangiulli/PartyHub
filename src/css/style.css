@@ -7,7 +7,7 @@ h5{
 }
 
 nav{
-    background-color: rgba(86, 183, 86, 0.534);
+    background-color: rgba(86, 183, 86, 0.415);
 }
 
 div#postView{
@@ -17,27 +17,23 @@ div#postView{
 
 div.card{
     border-radius: 10px;
-    background-color: rgba(86, 183, 86, 0.534);
+    background-color: rgba(86, 183, 86, 0.46);
 }
 
 div.modal-content{
-    background-color: rgb(244, 250, 244);
+    background-color: rgba(133, 212, 132, 0.925);
 }
 
 
 div.offcanvas{
-    background-color: rgb(244, 250, 244);
+    background-color: rgba(133, 212, 132, 0.925);
 }
 
 a{
     text-decoration-line: none;
-    color: rgb(0, 0, 0);
+    color:rgb(138,36,94);
 }
 
-
-img{
-    margin:5px;
-}
 
 body{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -67,7 +63,18 @@ td.price{
     background-color: rgba(133, 212, 132, 0.475);
 }
 
-
 div.shop{
     text-align: center;
+}
+
+li{
+    list-style-type: none;
+}
+
+img.img-fluid{
+    margin: 15px 0px;
+}
+
+input#srcevent, input#srcprofile{
+    margin-bottom: 10px;
 }

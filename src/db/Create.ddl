@@ -103,7 +103,7 @@ create table Utente (
 
 alter table Commento add constraint REF_Comme_Post_FK
      foreign key (idPost)
-     references Post(idPost);
+     references Post(idPost) ON DELETE CASCADE;
 
 alter table Commento add constraint REF_Comme_Utent_FK
      foreign key (UserCommento)
@@ -131,7 +131,7 @@ alter table MiPiace add constraint REF_MiPia_Utent_FK
 
 alter table MiPiace add constraint REF_MiPia_Post_FK
      foreign key (idPost)
-     references Post(idPost);
+     references Post(idPost) ON DELETE CASCADE;
 
 alter table Lista add constraint REF_Lista_Event_FK
      foreign key (idEvento)
@@ -147,7 +147,7 @@ alter table Notifica add constraint REF_Notif_Utent_FK
 
 alter table Notifica add constraint REF_Notif_Post_FK
      foreign key (idPost)
-     references Post(idPost);
+     references Post(idPost) ON DELETE CASCADE;
 
 alter table Opzione add constraint REF_Opzio_Sonda
      foreign key (idSondaggio)
