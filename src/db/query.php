@@ -20,6 +20,17 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function editProfilePicture($username, $immagine){
+        $query = "
+            UPDATE utente u
+            SET u.ImmagineProfilo = ?
+            WHERE u.Username = ?
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss', $immagine, $username);
+        $stmt->execute();
+    }
+
     public function checkUser($username){
         $query = "
             SELECT u.Password

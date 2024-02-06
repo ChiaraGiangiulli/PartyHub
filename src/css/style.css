@@ -7,31 +7,33 @@ h5{
 }
 
 nav{
-    background-color: rgba(144, 222, 138, 0.441);
+    background-color: rgba(86, 183, 86, 0.534);
 }
 
 div#postView{
     border-radius: 10px;
-    background-color: rgba(143, 222, 138, 0.256);
+    background-color: rgb(244, 250, 244);
 }
 
 div.card{
     border-radius: 10px;
-    background-color: rgba(223, 159, 195, 0.256);
+    background-color: rgba(86, 183, 86, 0.534);
 }
 
 div.modal-content{
-    background-color: rgba(255, 215, 182, 0.925);
+    background-color: rgb(244, 250, 244);
 }
 
+
 div.offcanvas{
-    background-color: rgb(255, 215, 182);
+    background-color: rgb(244, 250, 244);
 }
 
 a{
     text-decoration-line: none;
     color: rgb(0, 0, 0);
 }
+
 
 img{
     margin:5px;
@@ -40,27 +42,29 @@ img{
 body{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size:large;
-    background-color: rgba(223, 159, 195, 0.133);
+    background-color: rgba(133, 212, 132, 0.21);
 }
 
 li.list-group-item{
-    background-color: rgba(255, 215, 182, 0.09);
+    background-color: rgba(133, 212, 132, 0.292);
 }
 
 th.tot, td.tot{ 
-    background-color: rgb(159,223,159);
+    background-color: rgba(184, 86, 142, 0.912);
+    color: white;
 }
 
 th.quota, td.quota{
-    background-color: rgb(223,159,195);
+    background-color: rgba(70, 146, 70, 0.734);
+    color: white;
 }
 
 th.prod{
-    background-color: rgb(255, 215, 182);
+    background-color: rgba(133, 212, 132, 0.656);
 }
 
 td.price{
-    background-color: rgb(246, 194, 151);
+    background-color: rgba(133, 212, 132, 0.475);
 }
 
 
