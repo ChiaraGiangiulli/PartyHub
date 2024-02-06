@@ -44,7 +44,7 @@ foreach ($templateParams["post"] as $post){
         <div class="col-1">
             <div class="offcanvas offcanvas-bottom" id="comments">
                 <div class="offcanvas-header">
-                    <h3 class="offcanvas-title">Commenti</h3>
+                    <h3 class="offcanvas-title">Comments</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
                 </div>
                 <div class="offcanvas-body" id=offcanvasBody>
