@@ -58,7 +58,7 @@ class DatabaseHelper{
 
         $testo = "ha creato un nuovo evento: ".$nome;
         foreach($this->getFollowers($organizzatore) as $follower){
-            $this->newNotification("Nuovo Evento", $testo, $organizzatore, $follower['Follower'], null, 1);
+            $this->newNotification("Nuovo Evento", $testo, $organizzatore, $follower['Follower'], null);
         }
         return $stmt->insert_id;
     }
@@ -278,7 +278,7 @@ class DatabaseHelper{
         $stmt->execute();
 
         $testo = "ha iniziato a seguirti";
-        $this->newNotification("Follow", $testo, $followerId, $followingId, null, 0);
+        $this->newNotification("Follow", $testo, $followerId, $followingId, null);
     }
 
     public function unfollow($followerId, $followingId){
@@ -355,7 +355,7 @@ class DatabaseHelper{
         $stmt->execute();
 
         $testo = "ha messo like al tuo post: ".($this->getPostFromId($post)[0]['Testo']);
-        $this->newNotification("Like", $testo, $user, $this->getPostFromId($post)[0]['Proprietario'], $post, 0);
+        $this->newNotification("Like", $testo, $user, $this->getPostFromId($post)[0]['Proprietario'], $post);
     }
 
     public function removeLike($user, $post){
@@ -429,7 +429,7 @@ class DatabaseHelper{
         $stmt1->execute();
 
         $testo = "ha commentato il tuo post: ".($this->getPostFromId($idPost)[0]['Testo']);
-        $this->newNotification("Commento", $testo, $userCommento, $this->getPostFromId($idPost)[0]['Proprietario'], $idPost, 0);
+        $this->newNotification("Commento", $testo, $userCommento, $this->getPostFromId($idPost)[0]['Proprietario'], $idPost);
 
     }
 
