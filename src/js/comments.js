@@ -5,7 +5,6 @@ document.querySelectorAll('.comment-button').forEach(function (button) {
         formData.append('postId', idPost);
         axios.post('./api/comments.php', formData).then(response => {
             let comments = response.data;
-            console.log(comments);
             let stringComments = '';
             comments.forEach( comment => {
                 stringComments += ` 

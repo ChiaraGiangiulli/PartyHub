@@ -67,3 +67,11 @@ td.price{
 div.shop{
     text-align: center;
 }
+
+li{
+    list-style-type: none;
+}
+
+input#srcevent, input#srcprofile{
+    margin-bottom: 10px;
+}

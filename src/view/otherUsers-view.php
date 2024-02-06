@@ -61,6 +61,10 @@
       }
     ?>
 </div>
+<div class="col-sm-12 text-center mt-4">
+  <?php print_r($dbh->getUserFromUsername($templateParams["profilo"][0]['Username'])[0]['Nome']." "
+                .$dbh->getUserFromUsername($templateParams["profilo"][0]['Username'])[0]['Cognome']);?>
+</div>
 <div class="col-sm-12 text-center mt-4 mb-4">
   <div id="otherUsersForm" class="btn-group">
     <button id="following" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#followingModal">

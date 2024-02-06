@@ -108,15 +108,32 @@
 <?php
   if(isset($templateParams["risultatoSearchEvent"])){
     foreach($templateParams["risultatoSearchEvent"] as $event){ ?>
+    <ul>
+      <li>
       <a href="event.php?id=<?php print_r($event['idEvento'])?>">
-      <?php print_r($event['Nome']); ?></br></a>
-    <?php
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar4-event" viewBox="0 0 16 16">
+          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+          <path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+      <?php print_r($event['Nome']); ?></a>
+      </li>
+    </ul>
+    <?php  
     }
   }
   if(isset($templateParams["risultatoSearchProfile"])){  
     foreach($templateParams["risultatoSearchProfile"] as $profile){ ?>
+    <ul>
+      <li>
       <a href="otherUsers.php?user=<?php print_r($profile['Username'])?>">
-      <?php print_r($profile['Username']); ?></br></a>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+      </svg>
+      <?php print_r($profile['Username']); ?></a>
+      </li>
+    </ul>
+      
     <?php
     }
   }
