@@ -71,6 +71,10 @@ li{
     list-style-type: none;
 }
 
+img.img-fluid{
+    margin: 15px 0px;
+}
+
 input#srcevent, input#srcprofile{
     margin-bottom: 10px;
 }

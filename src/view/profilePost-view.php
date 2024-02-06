@@ -4,14 +4,14 @@ foreach ($templateParams["post"] as $post){
 ?>
 <div class="container-sm container-sm w-75 pt-3 pb-3 mb-3 mt-3" id="postView">
     <div class="row">
-        <div class="col-sm-10">
+        <div class="col">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar4-event" viewBox="0 0 16 16">
             <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
             <path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
         </svg>
             <a href="event.php?id=<?php print_r($post['idEvento']);?>"><?php print_r($dbh->getEventFromId($post['idEvento'])[0]['Nome']);?></a>
         </div>
-        <div class="col-sm-1 text-end">
+        <div class="col text-end">
         <?php if($templateParams["profilo"][0]['Username'] == $_SESSION['userId']){ ?>
             <button id="deletePost" type="button" class="btn btn-outline-success" data-postid="<?php echo $post['idPost']; ?>">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
