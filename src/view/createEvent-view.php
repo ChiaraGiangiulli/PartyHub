@@ -71,7 +71,7 @@
             </div>
             <div class="mb-3 mt-3">
                 <label for="image">Cover image:</label>
-                <input type="file" class="form-control" id="image" name="image" multiple />
+                <input type="file" class="form-control" id="image" name="image" />
             </div>
             <button id="createEvent" class="btn btn-success">Create</button>
         </form>

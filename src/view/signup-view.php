@@ -59,7 +59,7 @@
             </div>
             <div class="mb-3 mt-3">
                 <label for="image">Profile image:</label>
-                <input type="file" class="form-control" id="image" name="image" multiple />
+                <input type="file" class="form-control" id="image" name="image" />
             </div>
             <button type="submit" class="btn btn-success">Signup</button>
         </form>
