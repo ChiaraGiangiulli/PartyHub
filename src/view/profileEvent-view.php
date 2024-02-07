@@ -23,7 +23,7 @@
                         </svg>
                         <?php print_r($dbh->getEventFromId($event['idEvento'])[0]['Nome']);?></h5>
                         <div class="card-footer bg-transparent" style="margin-top: 20px;">
-                            <a href="event.php?id=<?php print_r($event['idEvento']);?>" class="btn btn-light">See Event</a>
+                            <a href="event.php?id=<?php print_r($event['idEvento']);?>" class="btn btn-outline-dark">See Event</a>
                         </div>
                     </div>
                 </div>
