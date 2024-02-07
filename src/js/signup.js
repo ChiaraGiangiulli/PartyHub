@@ -122,7 +122,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     formData.append('image', form.elements["image"].files[0]);
                 }
                 axios.post('./api/signup.php', formData).then(response => {
-                    console.log(response);
                     if (response.data.success){
                         window.open('./view/succesfullSignup.php','_self')
                     } else {

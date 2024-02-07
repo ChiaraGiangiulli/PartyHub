@@ -38,7 +38,7 @@
 </div>
 </nav>
     <div class="container-sm p-5 border">
-        <form id="newEventForm">
+        <form id="newEventForm" enctype="multipart/form-data">
 
             <div class="mb-3 mt-3">
                 <label for="name">Name:</label>

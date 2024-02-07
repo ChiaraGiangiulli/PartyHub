@@ -8,10 +8,8 @@ document.addEventListener("DOMContentLoaded", function() {
             formData.append('event', form.elements["event"].value);
             if (form.elements["image"].files.length > 0) {
                 formData.append('image', form.elements["image"].files[0]);
-                console.log(form.elements["image"].files[0]);
             }
             axios.post('../api/newPost.php?pers=1', formData).then(response => {
-                console.log(response);
                 if (response.data.success) {
                     window.open('/PartyHub/src/index.php', '_self');
                 }else{

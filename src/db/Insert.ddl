@@ -1,6 +1,6 @@
 INSERT INTO `utente` (`Nome`, `Cognome`, `Username`, `Password`, `Email`, `DataDiNascita`, `ImmagineProfilo`) VALUES
 ('Chiara', 'Giangiulli', 'chiag', '$2y$10$2IZCzgYyLr7ytmQEQWvmsewTqYhlBFuv.En7WqavJs0c85hX1.Yne', 'chiara.giangiulli@email.com', '2002-03-25', 'profile6.jpg'),
-('Seba', 'Seijas', 'seba_seijas', '$2y$10$6Sx1NTP7GRrVVbOvImr0Q.Ng4sL3bXq8DMc5fxiNbCnocZDHjsfwC', 'seba.seijas@email.com', '2001-07-23', 'profile5.jpg'),
+('Seba', 'Seijas', 'seba_seijas', '$2y$10$6Sx1NTP7GRrVVbOvImr0Q.Ng4sL3bXq8DMc5fxiNbCnocZDHjsfwC', 'seba.seijas@email.com', '2001-07-26', 'profile5.jpg'),
 ('John', 'Doe', 'User1', '$2y$10$vnW4sLCYg0x/jV/kJ0f9oOtpFAHSW4I7SIXTvEi.Sh08gots7xXJi', 'user1@email.com', '1988-02-18', 'profile3.jpg'),
 ('Jane', 'Doe', 'User2', '$2y$10$gJ8Rduj4gG4bF.YZl.dVduENLcnTuA9CRmFXJTK/lbYU0M7Yxtnbe', 'user2@email.com', '2024-02-02', 'profile1.jpg');
 
