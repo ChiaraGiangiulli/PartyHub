@@ -46,7 +46,7 @@
             </div>
             <div class="mb-3 mt-3">
                 <label for="image">Image:</label>
-                <input type="file" class="form-control" id="image" name="image" multiple />
+                <input type="file" class="form-control" id="image" name="image" />
             </div>
             <div class="mb-3 mt-3">
                 <label for="event">Event:</label>

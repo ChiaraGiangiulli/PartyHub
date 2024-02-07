@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             axios.post('../api/newPost.php?pers=1', formData).then(response => {
                 if (response.data.success) {
-                    alert(response.data.message);
                     window.open('/PartyHub/src/index.php', '_self');
                 }else{
                     alert(response.data.message);
