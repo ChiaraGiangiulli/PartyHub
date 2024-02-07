@@ -63,23 +63,13 @@ class DatabaseHelper{
         return $stmt->insert_id;
     }
 
-    public function deleteEvent($id){
-        $query = "
-            DELETE FROM evento 
-            WHERE idEvento = ?
-        ";
-
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-    }
 
     public function getEventFromDate($date){
         $query = "
-           SELECT *
-           FROM evento e
-           WHERE e.Data = ?
-           ORDER BY e.Data DESC
+            SELECT *
+            FROM evento e
+            WHERE e.Data = ?
+            ORDER BY e.Data DESC
         ";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $date);
@@ -131,20 +121,6 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function getEventFromId($id){
-        $query = "
-        SELECT *
-        FROM evento
-        WHERE idEvento = ?
-    ";
-
-    $stmt = $this->db->prepare($query);
-    $stmt->bind_param('i', $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function getUserFromUsername($username){
@@ -433,27 +409,6 @@ class DatabaseHelper{
 
     }
 
-    public function removeComment($idCommento, $idPost){
-        $query = "
-            DELETE FROM commento
-            WHERE idCommento = ?
-        ";
-
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $idCommento);
-        $stmt->execute();
-
-        $query = "
-            UPDATE post p
-            SET p.NumeroCommenti = p.NumeroCommenti - 1
-            WHERE p.IdPost = ?
-        ";
-
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $idPost);
-        $stmt->execute();
-    }
-
     public function getPostsComments($idPost){
         $query = "
             SELECT *
@@ -481,16 +436,6 @@ class DatabaseHelper{
         return $stmt->insert_id;
     }
 
-    public function deleteSurvey($idSondaggio){
-        $query = "
-            DELETE FROM sondaggio
-            WHERE idSondaggio = ?
-        ";
-
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $idSondaggio);
-        $stmt->execute();
-    }
 
     public function getSurveyFromEvent($evento){
         $query = "
@@ -557,19 +502,6 @@ class DatabaseHelper{
         $stmt->bind_param('is', $idSondaggio, $nome);
         $stmt->execute();
     }
-
-    public function removeVote($idSondaggio, $nome){
-        $query = "
-            UPDATE opzione o
-            SET o.NumeroVoti = o.NumeroVoti + 1
-            WHERE o.idSondaggio = ? AND o.Nome = ?
-        ";
-
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('is', $idSondaggio, $nome);
-        $stmt->execute();
-    }
-
     
     public function addList($idEvento){
         $query = "
@@ -597,17 +529,6 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function deleteList($idLista){
-        $query = "
-            DELETE FROM lista
-            WHERE idLista = ?
-        ";
-
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $idLista);
-        $stmt->execute();
     }
 
     public function getListFromEvent($evento){
@@ -760,16 +681,5 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function deleteNotification($idNotifica){
-        $query = "
-            DELETE FROM notifica
-            WHERE idNotifica = ?
-        ";
-
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $user, $idNotifica);
-        $stmt->execute();
     }
 }
