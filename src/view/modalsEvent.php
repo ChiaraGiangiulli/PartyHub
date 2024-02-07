@@ -13,11 +13,11 @@
                         <div class="input-group mb-3">
                         <input type="text" class="form-control" id="choices" name="choices[]" placeholder="Option" title="new option" required>
                         <div class="input-group-append">
-                            <button class="btn btn-outline-success" type="button" id="addChoice">Add Choice</button>
+                            <button class="btn btn-outline-dark" type="button" id="addChoice">Add Choice</button>
                         </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-dark">Submit</button>
                 </form>
             </div>
         </div>
@@ -42,11 +42,11 @@
                         <input type="text" class="form-control text-end" name="price[]" id="price[]" title="price" required>
                         <span class="input-group-text">€</span>
                         <div class="input-group-append">
-                            <button class="btn btn-outline-success" type="button" id="addProduct">Add Product</button>
+                            <button class="btn btn-outline-dark" type="button" id="addProduct">Add Product</button>
                         </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-dark">Submit</button>
                 </form>
             </div>
         </div>
