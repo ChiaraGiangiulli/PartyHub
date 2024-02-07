@@ -104,6 +104,21 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function searchEventFromName($name){
+        $query = "
+            SELECT *
+            FROM evento e
+            WHERE e.Nome LIKE CONCAT(?, '%')
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $name);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getEventFromUser($user){
         $query = "
             SELECT *
