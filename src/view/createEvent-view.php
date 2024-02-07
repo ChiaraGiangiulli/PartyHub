@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script defer src="../js/validate.js"></script>
+    <script defer src="../js/createEvent.js"></script>
     <link href="/PartyHub/src/css/style.css" rel="stylesheet">
 <body>
 <nav class="navbar navbar-expand">
