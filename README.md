@@ -1,10 +1,20 @@
-# PartyHub
-Social media per la creazione e condivisione di eventi privati.
+  # PartyHub
+PartyHub is a social media platform designed for creating, planning and sharing private events.
 
-# Inizializzazione
-Creare il db PartyHub utilizzando il file src/db/Create.ddl
+  # Initialization
+To set up PartyHub, follow these steps:
 
-Popolare il db utilizzando il file src/db/Insert.ddl
+- Create the PartyHub database using the file "src/db/Create.ddl".
 
-# Utilizzo
-Registrarsi e accedere per iniziare.
+- Populate the database using the file "src/db/Insert.ddl".
+
+  # Getting Started
+To start using PartyHub:
+
+- Register an account.
+
+- Log in.
+
+
+
+
