@@ -63,7 +63,7 @@
           <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
       <div class="modal-body">
-        <form action="../src/api/changePicture.php" method="post">
+        <form action="../src/api/changePicture.php" method="post" enctype="multipart/form-data">
           <div class="mb-3 mt-3">
               <label for="image">New Profile image:</label>
               <input type="file" class="form-control" id="image" name="image" required />

@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 formData.append('password', form.elements["pwd"].value);
                 formData.append('dateofbirth', form.elements["dob"].value);
                 if (form.elements["image"].files.length > 0) {
-                    formData.append('image', form.elements["image"].files[0].name);
+                    formData.append('image', form.elements["image"].files[0]);
                 }
                 axios.post('./api/signup.php', formData).then(response => {
                     console.log(response);
