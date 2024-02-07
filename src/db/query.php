@@ -605,7 +605,7 @@ class DatabaseHelper{
     public function requestDenied($user, $idEvento){
         $query = "
             DELETE FROM richiesta 
-            WHERE r.UserPartecipante = ? AND r.idEvento = ?
+            WHERE UserPartecipante = ? AND idEvento = ?
         ";
 
         $stmt = $this->db->prepare($query);

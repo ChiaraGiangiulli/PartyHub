@@ -39,7 +39,7 @@
 </div>
 </nav>
     <div class="container-sm p-5 border">
-        <form id="newPostForm">
+        <form id="newPostForm" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
                 <label for="caption">Caption:</label>
                 <input type="text" class="form-control" id="caption" placeholder="Caption" name="caption">

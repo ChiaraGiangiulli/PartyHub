@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 formData.append('date', form.elements["date"].value);
                 formData.append('time', form.elements["time"].value);
                 if (form.elements["image"].files.length > 0) {
-                    formData.append('image', form.elements["image"].files[0].name);
+                    formData.append('image', form.elements["image"].files[0]);
                 }
                 axios.post('../api/newEvent.php', formData).then(response => {
                     if (response.data.success){

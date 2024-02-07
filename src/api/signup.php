@@ -1,9 +1,9 @@
 <?php require_once("../database.php");
 $image = null;
-if(isset($_POST['image'])){
-    if($_POST['image'] != ""){
-        $image=$_POST['image'];
-    }
+if(isset($_FILES['image'])){
+    $image=$_FILES['image']['name'];
+    $fullPath = '../img/'.$image;
+    move_uploaded_file($_FILES['image']['tmp_name'], $fullPath);
 }
 if(isset($_POST['name'], $_POST['surname'], $_POST['username'], $_POST['password'],  $_POST['email'], $_POST['dateofbirth'])){
     if(count($dbh->getUserFromUsername($_POST['username'])) > 0){

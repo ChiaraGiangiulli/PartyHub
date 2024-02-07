@@ -4,6 +4,7 @@ if(document.getElementById("accept") != null){
         let formData = new FormData();
         formData.append('notification', idNotifica);
         axios.post('./api/acceptRequest.php', formData).then(response => {
+            location.reload();
         });
     });
 }
@@ -14,6 +15,7 @@ if(document.getElementById("deny") != null){
         let formData = new FormData();
         formData.append('notification', idNotifica);
         axios.post('./api/denyRequest.php', formData).then(response => {
+            location.reload();
         });
     });
 }
